@@ -1,0 +1,252 @@
+{% extends "base/en/base.html" %}
+{% load static %}
+{% block style %}
+.sec-bg {
+
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 300px;
+    margin-bottom: 100px;
+}
+.sec-bg .cover{
+
+    width: 100%;
+    height: 100%;
+    color: white;
+}
+/* Responsive for small devices like phones */
+@media only screen and (max-width: 600px) {
+    .sec-bg {
+        height: 200px; /* Decrease height for smaller screens */
+    }
+}
+
+/* Responsive for tablets */
+@media only screen and (min-width: 601px) and (max-width: 992px) {
+    .sec-bg {
+        height: 250px; /* Adjust height for tablets */
+    }
+}
+
+/* Responsive for larger screens like desktops */
+@media only screen and (min-width: 993px) {
+    .sec-bg {
+        height: 300px; /* Keep the original height for larger screens */
+    }
+}
+
+.product-carousel-container {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+}
+
+.product-carousel-wrapper {
+    width: 100%;
+    overflow: hidden;
+}
+
+.product-carousel {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    will-change: transform; /* Optimization */
+}
+
+.product-carousel-item {
+    flex: 0 0 25%; /* Show 4 items per slide by default */
+    padding: 10px;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+.product-carousel-item img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+
+.product-carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(255, 255, 255);
+    color: rgb(0, 0, 0);
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    z-index: 10;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+}
+
+.prev-product-btn {
+    left: 10px;
+}
+
+.next-product-btn {
+    right: 10px;
+}
+
+.hidden {
+    display: none;
+}
+
+/* RESPONSIVE DESIGN */
+@media (max-width: 1024px) {
+    .product-carousel-item {
+        flex: 0 0 33.33%; /* 3 items per slide */
+    }
+}
+
+@media (max-width: 768px) {
+    .product-carousel-item {
+        flex: 0 0 50%; /* 2 items per slide */
+    }
+}
+
+@media (max-width: 480px) {
+    .product-carousel-item {
+        flex: 0 0 100%; /* 1 item per slide */
+    }
+}
+
+.main-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures the main image maintains aspect ratio and fills the container */
+}
+
+.small-img-wrapper {
+    height: 150px; /* Set a fixed height for the smaller image containers */
+}
+
+.small-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures the small images maintain aspect ratio and fill their containers */
+}
+
+@media (max-width: 768px) {
+    .main-img {
+        height: auto;
+        object-fit: contain;
+    }
+    .small-img-wrapper {
+        margin-bottom: 10px;
+    }
+}
+
+{% endblock style %}
+{% block title %}City - Explore{% endblock title %}
+{% block content %}
+
+
+<section class="sec-bg" id='main-bg' style="margin-bottom: 80px; margin-top: 50px;">
+    <div class="cover d-flex align-items-center justify-content-center">
+        <div class="text-center">
+            <h2 id="city__name"></h2>
+        </div>
+    </div>
+</section>
+<!-- hotels -->
+<section class="container" style="margin-bottom: 80px;" id="city__hotel">
+    <div style="margin-bottom: 50px; padding-left: 10px;">
+        <h4>Discover top-rated popular hotels</h4>
+    </div>
+    <div id="bedrooms-carousel" class="product-carousel-container">
+    <button class="product-carousel-btn prev-product-btn hidden">❮</button>
+    <div class="product-carousel-wrapper">
+        <div class="product-carousel"></div>
+    </div>
+    <button class="product-carousel-btn next-product-btn">❯</button>
+</div>
+
+
+
+</section>
+
+<section class="container" style="margin-bottom: 80px;" id="city__resturant">
+
+    <div style="margin-bottom: 50px; padding-left: 10px;">
+        <h4>Explore exclusive premium resturant.</h4>
+    </div>
+    <div id="tables-carousel" class="product-carousel-container">
+    <button class="product-carousel-btn prev-product-btn hidden">❮</button>
+    <div class="product-carousel-wrapper">
+        <div class="product-carousel"></div>
+    </div>
+    <button class="product-carousel-btn next-product-btn">❯</button>
+</div>
+
+
+</section>
+
+{% comment %} Move here {% endcomment %}
+
+{% comment %} <section class="container" style="margin-bottom: 80px;">
+
+    <div class="row p-2" style="margin-bottom: 50px;">
+        <div class="col-lg-7">
+            <img src="./images/hotel-2.jpg" class="img-fluid rounded-start main-img" loading="lazy" alt="Pulman Kinshasa">
+        </div>
+        <div class="col-lg-5">
+            <div class="row mb-4">
+                <div class="col-lg-6 mb-2 small-img-wrapper">
+                    <img src="./images/hotel-2.jpg" class="img-fluid rounded-start small-img" alt="Pulman Kinshasa">
+                </div>
+                <div class="col-lg-6 mb-2 small-img-wrapper">
+                    <img src="./images/hotel-2.jpg" class="img-fluid rounded-start small-img" alt="Pulman Kinshasa">
+                </div>
+            </div>
+            <div class="row mb-4">
+                <div class="col-lg-6 mb-2 small-img-wrapper">
+                    <img src="./images/hotel-2.jpg" class="img-fluid rounded-start small-img" alt="Pulman Kinshasa">
+                </div>
+                <div class="col-lg-6 mb-2 small-img-wrapper">
+                    <img src="./images/hotel-2.jpg" class="img-fluid rounded-start small-img" alt="Pulman Kinshasa">
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+    <div class="product-carousel-container">
+        <button class="product-carousel-btn prev-product-btn hidden">❮</button>
+
+        <div class="product-carousel-wrapper">
+            <div class="product-carousel">
+                <div class="product-carousel-item">
+                    <img src="./images/hotel-2.jpg" class="img-fluid rounded-start" alt="Pulman Kinshasa">
+
+                </div>
+               
+            </div>
+        </div>
+
+        <button class="product-carousel-btn next-product-btn">❯</button>
+    </div>
+
+</section> {% endcomment %}
+{% comment %} <section class="mb-5 text-center container">
+    <div class="mb-3">
+        <h4>Discover the rich culture of <span id="city_name__dy"></span>.</h4>
+
+        <div class="mb-3">
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Blanditiis, vero ad optio natus cumque
+                modi, amet nesciunt facere unde error, autem voluptate. Omnis blanditiis doloremque iure et ducimus
+                voluptate? Recusandae.</p>
+        </div>
+    </div>
+</section> {% endcomment %}
+
+{% endblock content %}
+
+{% block js %} 
+<script src="{% static 'js/city_ex.js' %}"></script>
+
+{% endblock js %}

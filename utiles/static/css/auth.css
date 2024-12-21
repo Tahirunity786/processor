@@ -1,0 +1,187 @@
+@font-face {
+    font-family: Poppins;
+    src: url(../fonts/Poppins-Regular.ttf);
+
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+.bf2 {
+    font-weight: bold;
+    font-size: 1.5rem;
+    padding-top: 100px;
+}
+
+.bf3 {
+    font-size: 11px;
+}
+
+.bs5 {
+    font-weight: bold;
+    font-size: 2.68em;
+}
+
+.bf4 {
+    height: 7.125rem;
+    margin-top: 40px;
+    border-radius: 20px;
+    background-color: rgba(255, 255, 255, 0.21);
+    padding: 12px;
+}
+
+.bf4 h1 {
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.bf4 a {
+    font-weight: 700;
+}
+
+
+.b-1erte {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 29px 0;
+}
+
+.b-2erte {
+    border: 1px solid #DADADA;
+    height: 33rem;
+    width: 75%;
+    border-radius: 30px;
+    padding: 20px;
+    display: flex;
+
+
+}
+
+.b-3erte {
+    background: linear-gradient(193deg, #4B75A5 7%, #3F556D 100%);
+    width: 40%;
+    border-radius: 30px;
+    padding: 20px;
+
+}
+
+.bup12 {
+    margin-top: 90px;
+    padding-left: 30px;
+}
+
+input[type="email"] {
+    outline: none;
+    border: 1px solid #DADADA;
+    /* Default border */
+    padding: 5px;
+    border-radius: 4px;
+    display: block;
+    border-radius: 50px;
+    width: 25rem;
+    height: 45px;
+    padding: 20px;
+}
+
+input[type="email"]:focus {
+    border-color: #717070;
+
+}
+
+label,
+p {
+    font-family: Poppins;
+}
+
+.btn-bs6 {
+    background-color: #3F556D;
+    border-radius: 50px;
+    width: 12.5rem;
+    color: white;
+    font-family: Poppins;
+    font-weight: bold;
+    height: 2.9rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    cursor: pointer;
+}
+
+.ex {
+    position: relative;
+}
+
+.ex .e1,
+.e2,
+.e3 {
+    position: absolute;
+}
+
+@media (min-width: 380px) and (max-width: 830px) {
+    .ex {
+        display: none;
+    }
+
+    #email {
+        width: 100%;
+    }
+
+    .b-2erte {
+        flex-wrap: wrap-reverse;
+        height: auto;
+        border: none;
+        padding: 0;
+    }
+
+    .bup12,
+    .b-1erte {
+        padding: 0;
+        margin-top: 110px;
+        margin-bottom: 50px;
+    }
+
+    .b-3erte {
+        width: 100%;
+    }
+}
+
+
+/* Large Devices (769px - 992px) */
+@media (min-width: 831px) and (max-width: 992px) {
+    .b-2erte {
+        width: 80%;
+    }
+
+    .bf2 {
+        padding-top: 50px;
+    }
+
+    .bf3 {
+        font-size: 10px;
+    }
+
+    .bf4 h1 {
+        font-size: 14px;
+    }
+
+    .bf4 a {
+        font-size: 12px;
+    }
+}
+
+/* Extra Large Devices (993px - 1030px) */
+@media (min-width: 993px) and (max-width: 1030px) {
+    .bf2 {
+        padding-top: 50px;
+    }
+}

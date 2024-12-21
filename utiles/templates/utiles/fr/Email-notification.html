@@ -1,0 +1,41 @@
+{% extends "base/en/base.html" %}
+{% load static %}
+{% block css %}
+<link href="{% static 'css/nek0iese.css' %}" rel="stylesheet">
+{% endblock css %}
+{% block title %}Settings - Email Notification{% endblock title %}
+{% block content %}
+    <div class="container mt-5 mb-5">
+        <div class="row">
+            {% include "component/link-box.html" %}
+            <div class="col-lg-8">
+                <div class="mb-4">
+                    <h1 class="as-xe01 ms-1 mb-3">Email Notification</h1>
+                    <h5 class="as-xe001 ms-1">Customize  your notification experience. </h5>
+                </div>
+                <div class="line"></div>
+                <div class="mb-5">
+                    <div class="row mt-3 mb-3 align-items-center">
+                        <div class="col-lg-2">
+                            <h6 class="mt-1 mb-0" style="font-size: 0.85rem; font-weight: bold;">Email Notifications</h6>
+                        </div>
+                        <div class="col-lg-10 mb-1">
+                            <div class="d-flex justify-content-between align-items-center mt-2">
+                                <div>
+                                    <p class="m-0" style="font-size: 0.8rem;">When you turn off email notification you will not recieve any occasional and 
+                                        <br>subscribtion email from Nakiese.</p>
+                                </div>
+                                <div>
+                                    <a style="text-decoration: none;" href="#">On</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                   
+                </div>
+                
+            </div>
+        </div>
+    </div>
+
+{% endblock content%}

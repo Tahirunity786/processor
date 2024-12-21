@@ -1,0 +1,154 @@
+{% extends "fr/base/base.html" %}
+{% load static %}
+{% block style %}
+.form-control{
+  padding:0px;
+  background:none;
+  box-shadow: none !important;
+  border: none;
+}
+
+{% endblock style %}
+{% block title %}Home{% endblock title %}
+
+{% block content %}
+<main style="margin-bottom: 80px;">
+  <div class="cover d-flex justify-content-center align-items-center">
+    <div class="w-100">
+      <div class="mb-4 text-center"> <!-- Adjusted margin-bottom -->
+        <h1 style="font-size: 3rem; font-weight: bold;" class="text-light">Your gateway to
+          the exceptional
+        </h1>
+      </div>
+
+      <!-- Added margin-top to create space between text and row -->
+      <div class="container mt-5" id="search__a">
+        <div class="container">
+
+          <div class="row bg-light mt-4 justify-content-center  search-bar ">
+            <div class="col-lg-11">
+              <div class="row sm-search-main pt-3 pb-3">
+                <!-- City Input Field -->
+                <div class="col-lg-3 sm-search mt-0nk-sid-br position-relative" >
+                  <h6 class="text-muted">Where are you going ?</h6>
+                  <input type="text" id="cityInput" 
+                    placeholder="Search for a destination" autocomplete="off" class="ps-1 mb-nk-2">
+                  <ul class="dropdown-menu w-100" id="cityDropdown"></ul>
+                </div>
+                <!-- Date From Input Field -->
+                <div class="col-lg-3 sm-search mt-0nk-sid-br" >
+                  <h6 class="text-muted">Arrival Date</h6>
+                  <input type="date" id="dateInputg"
+                    placeholder="Add a date" class="ps-1 mb-nk-2">
+                </div>
+                <!-- Date Till Input Field -->
+                <div class="col-lg-3 sm-search mt-0nk-sid-br" >
+                  <h6 class="text-muted">Departure date</h6>
+                  <input type="date" id="dateInputa"
+                    placeholder="Add a date" class="ps-1 mb-nk-2">
+                </div>
+                <!-- Capacity Input Field -->
+                <div class="col-lg-3 mt-0nk-sid-br" >
+                  <h6 class="text-muted">Number of people</h6>
+                  <input type="number" id="capacityInput"  placeholder="Add" class="ps-1 mb-nk-2">
+                </div>
+              </div>
+            </div>
+            <!-- Search Button -->
+            <div class="col-lg-1 d-flex justify-content-center align-items-center">
+              <button id="searchButton"
+                class="btn btn-dark w-sm-100 rounded-pill d-flex justify-content-center align-items-center"
+                style="width: 40px; height: 40px;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-search"
+                  viewBox="0 0 16 16">
+                  <path
+                    d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
+                </svg>
+              </button>
+              <button id="searchButton-res" class="w-sm w-100 mt-4 btn btn-dark rounded-pill">Search</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</main>
+
+<section class="mb-5 mt-5">
+  
+
+<div class="mb-2 container">
+<h3 id="nak__var" class="mb-3"></h3>
+</div>
+<div class="container" id="exp_enxes">
+
+</div>
+</section>
+<div class="container">
+  <div class="mb-5">
+    <div style="margin-bottom: 30px;">
+      <h3>Les meilleurs hotels</h3>
+    </div>
+    <div class="row row-cols-lg-4 row-cols-md-2 row-cols-sm-1 g-4" id="hotel__grid">
+      <!-- Place your grid items here -->
+  </div>
+  
+  </div>
+</div>
+<div class="container mb-5">
+  <div class="mb-4 ms-3">
+    <h2> Explore Cities</h2>
+  </div>
+  <div id="cities__area">
+    <div class="wrapper">
+      <i id="left" class="fa-solid fa-angle-left"></i>
+      <div class="carousel">
+        <!-- Dynamic city items will be appended here by JavaScript -->
+      </div>
+      <i id="right" class="fa-solid fa-angle-right"></i>
+    </div>
+  </div>
+
+</div>
+
+
+{% endblock content %}
+{% block script %}
+document.addEventListener("DOMContentLoaded", () => {
+  let exp_enxes = document.getElementById('exp_enxes');
+  let nakvar = document.getElementById('nak__var');
+  if (exp_enxes) {
+    let user = localStorage.getItem('exn-u-cookie');
+    
+    if (user) {
+      user = JSON.parse(user);
+
+      // Check if the user has a valid token
+      if (user?.token && user?.token?.access) {
+        let Card = `<div class="card">
+  <div class="card-body">
+<h5 class="mb-3">Sign in, save money</h5>
+    <p>Get exclusive </p>
+  </div>
+</div>`;
+        exp_enxes.innerHTML = Card;
+      }
+    } else {
+      // Handle the case when no user is found
+      nakvar.innerText = "Travel more, spend less";
+      exp_enxes.innerHTML = `<div class="card">
+  <div class="card-body">
+
+    <h5 class="mb-3">Sign in, save money</h5>
+<p>Unlock exclusive discounts and special offers when you <a class="btn btn-primary" href='/login'> Sign in </a> or <a href='/register' style="text-decoration:none;"> Register </a>.</p>
+
+  </div>
+</div>`;
+    }
+  }
+});
+
+
+{% endblock script %}

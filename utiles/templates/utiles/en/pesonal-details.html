@@ -1,0 +1,213 @@
+{% extends "base/en/base.html" %}
+{% load static %}
+{% block css %}
+<link href="{% static 'css/nek0iese.css' %}" rel="stylesheet">
+{% endblock css %}
+{% block title %}Account Settings{% endblock title %}
+{% block content %}
+    <div class="container mt-5" id="Personal-d">
+        <div class="row">
+            {% include "component/link-box.html" %}
+            <div class="col-lg-8">
+                <div class="mb-4">
+                    <h1 class="as-xe01 ms-1 mb-3">Personal Details</h1>
+                    <h5 class="as-xe001 ms-1">Update your information and find out how it’s used.</h5>
+                </div>
+                <div class="line"></div>
+                <div class="mb-5 mt-2">
+                    <!-- Name Section -->
+                    <div class="mb-2 pt-1 row">
+                        <div class="col-lg-2">
+                            <h6 class="mt-1 mb-0" style="font-size: 0.85rem; font-weight: bold;">Name</h6>
+                        </div>
+                        <div class="col-lg-10 mb-1">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div>
+                                    <p class="m-0" id="fullname" style="font-size: 0.8rem;"></p>
+                                </div>
+                                <div>
+                                    <a data-bs-toggle="collapse" href="#collapseName" role="button" aria-expanded="false" aria-controls="collapseName" style="text-decoration: none;">Edit</a>
+                                </div>
+                            </div>
+                            <div class="collapse w-100 mt-2 text-start" id="collapseName">
+                                <div class="line"></div>
+                                    
+                                <div class="row mt-2">
+                                    <div class="col-lg-6">
+                                        <input type="text" class="form-control" name="firstName" id="firstName" placeholder="First name">
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <input type="text" class="form-control" name="lastName" id="lastName" placeholder="Last name">
+                                    </div>
+                                </div>
+                                <button class="btn btn-light mr-auto mt-2" id="name">Save</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="line"></div>
+                
+                    <!-- Email Section -->
+                    <div class="mb-2 pt-1 row">
+                        <div class="col-lg-2">
+                            <h6 class="mt-1 mb-0" style="font-size: 0.85rem; font-weight: bold;">Email</h6>
+                        </div>
+                        <div class="col-lg-10 mb-1">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div>
+                                    <p class="m-0" id="email" style="font-size: 0.8rem;"></p>
+                                </div>
+                                <div>
+                                    <a data-bs-toggle="collapse" href="#collapseEmail" role="button" aria-expanded="false" aria-controls="collapseEmail" style="text-decoration: none;">Edit</a>
+                                </div>
+                            </div>
+                            
+                            <div class="collapse w-100 mt-2" id="collapseEmail">
+                                <div class="line"></div>
+                                    <div class="mb-2 mt-1">
+                                        
+                                        <input type="email" class="form-control w-50" id="emailId" placeholder="test6@gmail.com">
+                                    </div>
+                                    <button class="btn btn-light" id="savemeil">Save</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="line"></div>
+                
+                    <!-- Phone Section -->
+                    <div class="mb-2 pt-1 row">
+                        <div class="col-lg-2">
+                            <h6 class="mt-1 mb-0" style="font-size: 0.85rem; font-weight: bold;">Phone no</h6>
+                        </div>
+                        <div class="col-lg-10 mb-1">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div>
+                                    <p class="m-0" id="phno" style="font-size: 0.8rem;"></p>
+                                </div>
+                                <div>
+                                    <a data-bs-toggle="collapse" href="#collapsePhone" role="button" aria-expanded="false" aria-controls="collapsePhone" style="text-decoration: none;">Edit</a>
+                                </div>
+                            </div>
+                            <div class="collapse w-100 mt-2" id="collapsePhone">
+                                <div class="line"></div>
+                                <div class="mb-2 mt-1">
+                                    <input type="text" class="form-control w-50" id="phno2" placeholder="+92 3232963784">
+                                </div>
+                                <button class="btn btn-light" id="saveph">Save</button>
+                            </div>
+                            
+                        </div>
+                    </div>
+                    <div class="line"></div>
+                
+                    <!-- Date of Birth Section -->
+                    <div class="mb-2 pt-1 row">
+                        <div class="col-lg-2">
+                            <h6 class="mt-1 mb-0" style="font-size: 0.85rem; font-weight: bold;">Date of Birth</h6>
+                        </div>
+                        <div class="col-lg-10 mb-1">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div>
+                                    <p class="m-0" id="dob" style="font-size: 0.8rem;"></p>
+                                </div>
+                                <div>
+                                    <a data-bs-toggle="collapse" href="#collapseDob" role="button" aria-expanded="false" aria-controls="collapseDob" style="text-decoration: none;">Edit</a>
+                                </div>
+                            </div>
+                            <div class="collapse w-100 mt-2" id="collapseDob">
+                                <div class="line"></div>
+                                <div class="mb-2 mt-1">
+                                    
+                                    <input type="date" class="form-control w-50" id="dob2">
+                                </div>
+                                <button class="btn btn-light " id="savedob">Save</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="line"></div>
+                
+                    <!-- Nationality Section -->
+                    <div class="mb-2 pt-1 row">
+                        <div class="col-lg-2">
+                            <h6 class="mt-1 mb-0" style="font-size: 0.85rem; font-weight: bold;">Nationality</h6>
+                        </div>
+                        <div class="col-lg-10 mb-1">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div>
+                                    <p class="m-0" id="nationality" style="font-size: 0.8rem;"></p>
+                                </div>
+                                <div>
+                                    <a data-bs-toggle="collapse" href="#collapseNationality" role="button" aria-expanded="false" aria-controls="collapseNationality" style="text-decoration: none;">Edit</a>
+                                </div>
+                            </div>
+                            <div class="collapse w-100 mt-2" id="collapseNationality">
+                                <div class="line"></div>
+                                <div class="mb-2 mt-1">
+                                    
+                                    <input type="text" class="form-control w-50" id="nat" placeholder="Pakistani">
+                                </div>
+                                <button class="btn btn-light" id="savnat">Save</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="line"></div>
+                
+                    <!-- Gender Section -->
+                    <div class="mb-2 pt-1 row">
+                        <div class="col-lg-2">
+                            <h6 class="mt-1 mb-0" style="font-size: 0.85rem; font-weight: bold;">Gender</h6>
+                        </div>
+                        <div class="col-lg-10 mb-1">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div>
+                                    <p class="m-0" id="gender" style="font-size: 0.8rem;"></p>
+                                </div>
+                                <div>
+                                    <a data-bs-toggle="collapse" href="#collapseGender" role="button" aria-expanded="false" aria-controls="collapseGender" style="text-decoration: none;">Edit</a>
+                                </div>
+                            </div>
+                            <div class="collapse w-100 mt-2" id="collapseGender">
+                                <div class="line"></div>
+                                    <div class="mb-3 mt-2">
+                                        <select class="form-select" id="genderInput">
+                                            <option value="Male">Male</option>
+                                            <option value="Female">Female</option>
+                                            <option value="Other">Other</option>
+                                        </select>
+                                    </div>
+                                    <button class="btn btn-light" id="savgender">Save</button>
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <div class="line"></div>
+                
+                    <!-- Address Section -->
+                    <div class="mb-2 pt-1 row">
+                        <div class="col-lg-2">
+                            <h6 class="mt-1 mb-0" style="font-size: 0.85rem; font-weight: bold;">Address</h6>
+                        </div>
+                        <div class="col-lg-10 mb-1">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div>
+                                    <p class="m-0" id="address" style="font-size: 0.8rem;"></p>
+                                </div>
+                                <div>
+                                    <a data-bs-toggle="collapse" href="#collapseAddress" role="button" aria-expanded="false" aria-controls="collapseAddress" style="text-decoration: none;">Edit</a>
+                                </div>
+                            </div>
+                            <div class="collapse w-100 mt-2" id="collapseAddress">
+                                <div class="line"></div>
+                                    <div class="mb-3 mt-2">
+                                        <input type="text" class="form-control" id="addressInput" placeholder="Remote">
+                                    </div>
+                                    <button class="btn btn-light" id="savaddress">Save</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+
+    {% endblock content %}

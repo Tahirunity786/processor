@@ -1,0 +1,50 @@
+<div class="custom-modal-overlay" id="customModalOverlay">
+  <div class="custom-modal" id="customModal">
+    <div class="custom-modal-header">
+      <h2>Change Your Password</h2>
+      <button class="custom-close-modal-btn" id="customCloseModalBtn">&times;</button>
+    </div>
+    <div class="custom-modal-body">
+      <form id="customResetPasswordForm">
+        <label for="custom-old-password" style="margin-left: 0px;">Old
+          Password</label>
+        <input type="password" id="custom-old-password" name="new-password" placeholder="Enter old password" required>
+
+        <label for="custom-new-password" style="margin-left: 0px;">New
+          Password</label>
+        <input type="password" id="custom-new-password" name="new-password" placeholder="Enter new password" required>
+
+        <label for="custom-confirm-password" style="margin-left: 0px;">Confirm New
+          Password</label>
+        <input type="password" id="custom-confirm-password" name="confirm-password" placeholder="Confirm new password"
+          required>
+
+        <p class="custom-error-message" id="customErrorMessage"></p>
+
+      </form>
+    </div>
+    <div class="custom-modal-footer">
+      <button class="custom-close-modal-btn">Close</button>
+      <button type="submit" class="custom-submit-btn" id="send-reset">Reset Password</button>
+    </div>
+  </div>
+</div>
+
+<div class="custom-modal-overlay" id="customModalOverlay2">
+  <div class="custom-modal2" id="customModal2">
+    <div class="custom-modal-header">
+      <h2>Are You Sure?</h2>
+      <button class="custom-close-modal-btn2 text-dark"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
+        <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8z"/>
+      </svg></button>
+    </div>
+    <div class="custom-modal-body text-center pt-5 pb-5">
+
+
+        <button class="btn btn-danger btn-lg" id="delacc">Delete Account</button>
+
+
+    </div>
+
+  </div>
+</div>

@@ -1,0 +1,58 @@
+@font-face {
+    font-family: Poppins;
+    src: url(../fonts/Poppins-Regular.ttf);
+    
+}
+
+*{
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+}
+html,
+body {
+    height: 100%;
+    
+}
+body{
+    display: flex;
+    align-items: center;
+}
+.bc-123ex{
+    border: 1px solid #DADADA;
+    border-radius: 20px;
+}
+.bc-123ex .mb-2 img{
+    height: 80px;
+    width: 200px;
+    
+}
+label ,input{
+    font-family: Poppins;
+}
+input{
+    height: 2.7rem;
+    border-radius: 50px;
+    outline: none;
+    border: 1px solid #DADADA;
+    padding: 20px;
+}
+input:focus{
+    border: 1px solid;
+}
+.btn-bc-123xee{
+    background-color: #3F556D;
+    width: 100%;
+    height: 2.7rem;
+    border-radius: 50px;
+    color: white;
+    font-weight: 700;
+    cursor: pointer;
+    border: none;
+    transition: .2s all ease-in-out;
+
+}
+
+.btn-bc-123xee:hover{
+    background-color: #4B75A5;
+}

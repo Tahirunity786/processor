@@ -1,0 +1,183 @@
+{% extends "base/en/base.html" %}
+{% load static %}
+{% block title %}Room Details{% endblock title %}
+{% block content %}
+
+
+<section style="margin-bottom: 80px; background-color: #4B75A5; padding: 20px; max-height: auto;">
+  <div class="cover d-flex justify-content-center align-items-center">
+    <div class="w-100">
+      <div class="mb-4 text-center mt-5"> <!-- Adjusted margin-bottom -->
+        <h1 style="font-size: 2rem; font-weight: bold;" class="text-light">Discover Your Ideal Stay – Search Available
+          Hotel Rooms</h1>
+      </div>
+
+      <!-- Added margin-top to create space between text and row -->
+      <div class="container mt-5 ps-5 pe-5" id="search__a">
+        <div class="container">
+
+          <div class="row bg-light mt-4 justify-content-center p-3 search-bar">
+            <div class="col-lg-11">
+              <div class="row">
+                <!-- City Input Field -->
+                <div class="col-lg-3 mt-0 nk-sid-br position-relative" >
+                  <h6 class="text-muted">Où allez-vous ?</h6>
+                  <input type="text" id="cityInput" 
+                    placeholder="Chercher une destination" autocomplete="off">
+                  <ul class="dropdown-menu w-100" id="cityDropdown"></ul>
+                </div>
+                <!-- Date From Input Field -->
+                <div class="col-lg-3 mt-0nk-sid-br" >
+                  <h6 class="text-muted nav-link">Date d'arrivée (From)</h6>
+                  <input type="date" id="dateInputg"
+                    placeholder="Ajouter une date">
+                </div>
+                <!-- Date Till Input Field -->
+                <div class="col-lg-3 mt-0nk-sid-br" >
+                  <h6 class="text-muted">Date de départ (Till)</h6>
+                  <input type="date" id="dateInputa"
+                    placeholder="Ajouter une date">
+                </div>
+                <!-- Capacity Input Field -->
+                <div class="col-lg-3 mt-0nk-sid-br" >
+                  <h6 class="text-muted">Nombre de personnes</h6>
+                  <input type="number" id="capacityInput"  placeholder="Ajouter">
+                </div>
+              </div>
+            </div>
+            <!-- Search Button -->
+            <div class="col-lg-1 d-flex justify-content-center align-items-center">
+              <button id="searchButton"
+                class="btn btn-dark rounded-pill d-flex justify-content-center align-items-center"
+                style="width: 40px; height: 40px;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-search"
+                  viewBox="0 0 16 16">
+                  <path
+                    d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="container mb-5">
+  <div class="row">
+    <div class="col-lg-4 mb-3">
+      <div class="card p-0" style="width: 100%; border: none;">
+        <div class="card-body border mb-1">
+          <h4 class="card-title">Filters by</h4>
+          <div class="mb-2 p-2">
+            <label for="customRange1" class="form-label ms-0">Price range</label>
+            <div class="d-flex justify-content-between">
+              <span style="font-weight: bold;">1000</span>
+              <span style="font-weight: bold;">30000</span>
+            </div>
+            <input type="range" class="form-range" min="1000" step="1000" max="30000" id="customRange1"
+              oninput="updatePrice(this.value)">
+          </div>
+          <div class="mt-2">
+            <h4>Selected Price: <span id="priceDisplay">1000</span></h4>
+          </div>
+        </div>
+        <div class="card-body border mb-1">
+          <h4 class="card-title">Filters by</h4>
+          <ul class="ps-1" style="list-style: none;">
+            <li>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="1" id="amenitywifi">
+                <label class="form-check-label mt-1" for="amenitywifi"> Wifi </label>
+              </div>
+            </li>
+            <li>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="2" id="amenitypiscine">
+                <label class="form-check-label mt-1" for="amenitypiscine"> Piscine </label>
+              </div>
+            </li>
+            <li>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="3" id="amenitysport">
+                <label class="form-check-label mt-1" for="amenitysport"> Salle de sport </label>
+              </div>
+            </li>
+            <li>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="4" id="amenitytv">
+                <label class="form-check-label mt-1" for="amenitytv"> TV </label>
+              </div>
+            </li>
+            <li>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="5" id="amenityparking">
+                <label class="form-check-label mt-1" for="amenityparking"> Parking gratuit </label>
+              </div>
+            </li>
+            <li>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="6" id="amenitynetflix">
+                <label class="form-check-label mt-1" for="amenitynetflix"> Netflix </label>
+              </div>
+            </li>
+            <li>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="7" id="amenitybath">
+                <label class="form-check-label mt-1" for="amenitybath"> Bain chaud </label>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <div class="card-body border mb-1">
+          <h4 class="card-title">Filters by</h4>
+          <ul class="ps-1" style="list-style: none;">
+            <li>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="5" id="rating5">
+                <label class="form-check-label mt-1" for="rating5"> 5 star rating </label>
+              </div>
+            </li>
+            <li>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="4" id="rating4">
+                <label class="form-check-label mt-1" for="rating4"> 4 star rating </label>
+              </div>
+            </li>
+            <li>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="3" id="rating3">
+                <label class="form-check-label mt-1" for="rating3"> 3 star rating </label>
+              </div>
+            </li>
+            <li>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="2" id="rating2">
+                <label class="form-check-label mt-1" for="rating2"> 2 star rating </label>
+              </div>
+            </li>
+            <li>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="1" id="rating1">
+                <label class="form-check-label mt-1" for="rating1"> 1 star rating </label>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-8">
+      <div class="mb-4">
+        <h3><span id="destination"></span>: <span id="countFound"></span> hotels found</h3>
+      </div>
+      <div class="mb-2" id="hotel_search__grid"></div>
+    </div>
+  </div>
+</div>
+
+{% endblock content %}
+
+{% block js %}
+<script src="{% static 'js/hotel-search.js' %}"></script>
+{% endblock js %}

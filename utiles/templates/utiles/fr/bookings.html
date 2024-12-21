@@ -1,0 +1,17 @@
+{% extends "base/en/base.html" %}
+{% load static %}
+{% block title %}Hotels{% endblock title %}
+{% block content %}
+<div class="container mt-5 mb-5">
+    <div class="mb-5">
+        <h1 class="as-xe0 mb-3">My Bookings</h1>
+
+    </div>
+
+    <div class="row row-cols-lg-4 row-cols-md-2 row-cols-sm-1 g-2" id="booking_grid"></div>
+
+</div>
+{% endblock content %}
+{% block js %}
+<script src="{% static 'js/my-bookings.js' %}"></script>
+{% endblock js %}

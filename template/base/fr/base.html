@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>{% block title %}{% endblock title %}</title>
+  <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'css/butterup.min.css' %}" rel="stylesheet">
+  
+  <link href="{% static 'css/main.css' %}" rel="stylesheet">
+  <link href="{% static 'css/crousal.css' %}" rel="stylesheet">
+  <link href="{% static 'css/medi-s.css' %}" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+  {% block css %}{% endblock css %}
+  <style>
+    .navbar-brand {
+      font-size: 1.5rem;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+    }
+
+    .navbar-brand img {
+      height: 30px;
+      margin-right: 10px;
+    }
+
+    .nav-center {
+      margin: auto;
+      display: flex;
+      align-items: center;
+      border: 1px solid #ccc;
+      border-radius: 50px;
+      padding: 5px 15px;
+    }
+
+    .nav-center .nav-link {
+      font-weight: bold;
+      color: black;
+      padding: 5px 10px;
+    }
+
+    .nav-center .nav-link:hover {
+      text-decoration: none;
+    }
+
+    .nav-icons .nav-link {
+      padding: 5px;
+    }
+
+    .nav-icons .nav-link img {
+      width: 24px;
+      height: 24px;
+    }
+
+      {% block style %}
+
+      {% endblock style %}
+  </style>
+</head>
+
+<body>
+
+  <nav class="navbar navbar-expand-lg navbar-light bg-white mb-2">
+    <div class="container">
+      <a class="navbar-brand" href="/">
+        <img src="{% static 'images/Group 1.svg' %}" alt="Bootstrap" style="height: 130px; height: 60px;">
+      </a>
+      <div class="nav-center p-2  nak-res-nav">
+        <a class="nav-link kn-nav-link ex-o r-1" href="/" id="home">Home</a>
+        <a class="nav-link kn-nav-link ex-o" href="/nakiese/fr/Hébergements" id="hotels">Hotels</a>
+        <a class="nav-link kn-nav-link ex-o r-2" href="/nakiese/fr/resturants" id="restaurants">Restaurants</a>
+      </div>
+      <div class="nav-icons d-flex nak-res-nav" id="utiles">
+
+      </div>
+
+      <div>
+        <button class="btn btn-light nak-re-btn p-0 border" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"
+          aria-controls="offcanvasRight">
+          <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-list"
+            viewBox="0 0 16 16">
+            <path fill-rule="evenodd"
+              d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <div class="offcanvas offcanvas-end  " tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+    <div class="bg-off">
+      <div class="offcanvas-header pt-4">
+        <h5 class="offcanvas-title" id="offcanvasRightLabel"><img src="{% static 'images/Group 1.svg' %}" alt=""
+            width="140" height="50"></h5>
+        <button type="button" class="btn-close mt-2" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      </div>
+      <div class="offcanvas-body p-0" style="position: relative;">
+        <div class="p-4">
+          <h6 style="font-weight: bold; margin-bottom: 10px;">Menu</h6>
+          <div class="mb-2">
+            <ul class="ps-0" style="list-style: none; ">
+              <li class="mt-3 mb-3"><a class="nav-link" href="/">Home</a></li>
+              <div class="line"></div>
+              <li class="mt-3 mb-3"><a class="nav-link " href="/nakiese/Hébergements" id="hotels">Hotels</a></li>
+              <div class="line"></div>
+              <li class="mt-3 mb-3"><a class="nav-link" href="/nakiese/resturants" id="restaurants">Restaurants</a></li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+      
+    </div>
+    <div class="w-100" style="position: relative; bottom: 30px; z-index: 1037;">
+      <div class="d-flex justify-content-evenly align-items-center bg-secondary pt-2 pb-2">
+        <div>
+          <a href="/login" class="btn btn-primary ms-3 rounded-pill text-light text-center">Login</a>
+        </div>
+        <div>
+          <a href="/register" class="btn btn-primary ms-3 rounded-pill text-light text-center">Sign Up</a>
+        </div>
+        <div>
+          <button type="button" class="btn btn-light rounded-pill d-flex justify-content-center align-items-center p-0 ms-4"
+          style="height: 40px; width: 40px; border: 1px solid rgb(218, 218, 218);" data-bs-toggle="modal" data-bs-target="#languageop">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-globe"
+            viewBox="0 0 16 16">
+            <path
+              d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m7.5-6.923c-.67.204-1.335.82-1.887 1.855A8 8 0 0 0 5.145 4H7.5zM4.09 4a9.3 9.3 0 0 1 .64-1.539 7 7 0 0 1 .597-.933A7.03 7.03 0 0 0 2.255 4zm-.582 3.5c.03-.877.138-1.718.312-2.5H1.674a7 7 0 0 0-.656 2.5zM4.847 5a12.5 12.5 0 0 0-.338 2.5H7.5V5zM8.5 5v2.5h2.99a12.5 12.5 0 0 0-.337-2.5zM4.51 8.5a12.5 12.5 0 0 0 .337 2.5H7.5V8.5zm3.99 0V11h2.653c.187-.765.306-1.608.338-2.5zM5.145 12q.208.58.468 1.068c.552 1.035 1.218 1.65 1.887 1.855V12zm.182 2.472a7 7 0 0 1-.597-.933A9.3 9.3 0 0 1 4.09 12H2.255a7 7 0 0 0 3.072 2.472M3.82 11a13.7 13.7 0 0 1-.312-2.5h-2.49c.062.89.291 1.733.656 2.5zm6.853 3.472A7 7 0 0 0 13.745 12H11.91a9.3 9.3 0 0 1-.64 1.539 7 7 0 0 1-.597.933M8.5 12v2.923c.67-.204 1.335-.82 1.887-1.855q.26-.487.468-1.068zm3.68-1h2.146c.365-.767.594-1.61.656-2.5h-2.49a13.7 13.7 0 0 1-.312 2.5m2.802-3.5a7 7 0 0 0-.656-2.5H12.18c.174.782.282 1.623.312 2.5zM11.27 2.461c.247.464.462.98.64 1.539h1.835a7 7 0 0 0-3.072-2.472c.218.284.418.598.597.933M10.855 4a8 8 0 0 0-.468-1.068C9.835 1.897 9.17 1.282 8.5 1.077V4z" />
+          </svg>
+        </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  {% block content %}{% endblock content %}
+  <footer>
+    <div class="container pt-5">
+      <div class="row g-4">
+        <div class="col-12 col-md-12 col-lg-12 d-lg-flex">
+          <!-- First column that will be 100% width on medium devices -->
+          <div class="col-lg-5 mb-4 mb-lg-0 pe-4">
+            <img src="{% static 'images/Group 1.svg' %}" width="165" height="60" alt="logo">
+            <p class="mt-4">Departure defective arranging rapturous did believe him all had supported.</p>
+            <div class="d-flex align-items-center mb-2">
+              <img src="{% static 'images/ph.svg' %}" alt="phone no" style="margin-right: 10px;">
+              <span>+1 234 345678890</span>
+            </div>
+            <div class="d-flex align-items-center mb-5">
+              <img src="{% static 'images/mail.svg' %}" alt="email" style="margin-right: 10px;">
+              <span>example@gmail.com</span>
+            </div>
+
+          </div>
+
+          <!-- Remaining four columns -->
+          <div class="col-lg-7 fts-xe2" style="margin-left: auto;">
+            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4 justify-content-center">
+              <div class="col">
+                <h4 style="font-weight: 700; font-size:24px">Pages</h2>
+                  <div class="mb-2">
+                    <ul style="list-style: none; padding-left: 0px;">
+                      <li><a class="nav-link" href="/">Hotels</a></li>
+                      <li><a class="nav-link" href="/nakiese/resturants">Resturants</a></li>
+                      <li><a class="nav-link" href="/nakiese/about-us">about</a></li>
+                    </ul>
+                  </div>
+
+              </div>
+              <div class="col">
+                <h4 style="font-weight: 700; font-size:24px">Useful links</h2>
+                  <div class="mb-2">
+                    <ul style="list-style: none; padding-left: 0px;">
+                      <li><a class="nav-link" href="/login">Login</a></li>
+                      <li><a class="nav-link" href="/register">Sign Up</a></li>
+
+                    </ul>
+                  </div>
+              </div>
+              <div class="col">
+                <h4 style="font-weight: 700; font-size:24px">Recent Visit</h2>
+                  <div class="mb-2">
+                    <ul style="list-style: none; padding-left: 0px;">
+                      <li><a class="nav-link" href="#">links</a></li>
+
+                    </ul>
+                  </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="mb-2 d-flex justify-content-between aign-items-center flex-wrap">
+        <div>
+          <h4 style="font-weight: 600;">Payment & Security</h4>
+          <div class="d-flex  aign-items-center" style="position: relative;">
+            <div class="fts-xxe0"><img src="{% static 'images/epinher.svg' %}" alt="circle"> <img
+                style="position: absolute; top: 5px; left: 8px; z-index:50;" src="{% static 'images/image 4.svg' %}"
+                alt="image">
+            </div>
+            <div class="fts-xxe0"><img src="{% static 'images/epinher.svg' %}" alt="circle"> <img
+                style="position: absolute; top: 12px; left: 5px; z-index:50;" src="{% static 'images/image 5.svg' %}"
+                alt="image">
+            </div>
+            <div class="fts-xxe0"><img src="{% static 'images/epinher.svg' %}" alt="circle"> <img
+                style="position: absolute; top: 10px; left: 5px; z-index:50;" src="{% static 'images/image 6.svg' %}"
+                alt="image">
+            </div>
+          </div>
+        </div>
+        <div>
+          <h4 class="fts-xe4 text-end" style="font-weight: 600;">Follow us on</h4>
+          <div class="d-flex  aign-items-center">
+            <div class="fts-xxe1 "><img src="{% static 'images/epinher.svg' %}" alt="circle"><img class="fts-xxxe1"
+                src="{% static 'images/image 1.svg' %}" alt="icon"></div>
+            <div class="fts-xxe1"><img src="{% static 'images/epinher.svg' %}" alt="circle"><img class="fts-xxxe1"
+                src="{% static 'images/image 2.svg' %}" alt="icon"></div>
+            <div class="fts-xxe1"><img src="{% static 'images/epinher.svg' %}" alt="circle"><img class="fts-xxxe1"
+                src="{% static 'images/image 3.svg' %}" alt="icon"></div>
+            <div class="fts-xxe1"><img src="{% static 'images/epinher.svg' %}" alt="circle"><img class="fts-xxxe1"
+                src="{% static 'images/image.svg' %}" alt="icon"></div>
+          </div>
+        </div>
+      </div>
+      <hr>
+
+      <div class="mb-2 d-flex justify-content-between aign-items-center pt-3 pb-2">
+        <div>
+          <span>Copyrights ©2024 Nakiese. Built By Imara Technologies</span>
+
+        </div>
+        <div class=" d-flex justify-content-between aign-items-center">
+          <div style="margin-left: 10px;"><a class="nav-link" href="/terms-and-conditions/">Terms and condition</a>
+          </div>
+          <div style="margin-left: 10px;"><a class="nav-link" href="/privacy-policy/">Privacy policy</a></div>
+          <div style="margin-left: 10px;"><a class="nav-link" href="#">Refund Policy</a></div>
+
+
+        </div>
+      </div>
+    </div>
+
+  </footer>
+  <script src="{% static 'js/jquery-3.6.0.js' %}"></script>
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+  <script src="{% static 'js/butterup.min.js' %}"></script>
+  <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'js/cam-slider.js' %}"></script>
+  <script src="{% static 'js/crousal.js' %}"></script>
+  <script src="{% static 'js/worker.js' %}"></script>
+  <script src="{% static 'js/apps.js' %}"></script>
+
+  {% block js %} {% endblock js %}
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      // Helper functions for encoding and decoding with URL-safe methods
+      function encodeData(data) {
+        return encodeURIComponent(data);
+      }
+
+      function decodeData(encodedData) {
+        return decodeURIComponent(encodedData);
+      }
+
+      // Get the stored active link from localStorage and decode it
+      const encodedActiveLinkId = localStorage.getItem('activeLinkId');
+      if (encodedActiveLinkId) {
+        try {
+          const activeLinkId = decodeData(encodedActiveLinkId);
+          const activeLink = document.getElementById(activeLinkId);
+
+          // Add the 'active' class to the stored active link
+          if (activeLink) {
+            activeLink.classList.add('active');
+          }
+        } catch (e) {
+          console.error('Error decoding active link ID:', e);
+        }
+      }
+
+      // Add event listener for each navigation link
+      document.querySelectorAll('.kn-nav-link').forEach(link => {
+        link.addEventListener('click', function (event) {
+          // Remove 'active' class from all links
+          document.querySelectorAll('.kn-nav-link').forEach(l => l.classList.remove('active'));
+
+          // Add 'active' class to the clicked link
+          this.classList.add('active');
+
+          // Encode and store the clicked link's ID in localStorage
+          const encodedLinkId = encodeData(this.id);
+          localStorage.setItem('activeLinkId', encodedLinkId);
+        });
+      });
+    });
+
+    {% block script %} {% endblock script %}
+  </script>
+</body>
+
+</html>

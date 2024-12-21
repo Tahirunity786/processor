@@ -1,0 +1,95 @@
+{% extends "base/en/base.html" %}
+{% load static %}
+{% block css %}
+<link href="{% static 'css/nek0iese.css' %}" rel="stylesheet">
+{% endblock css %}
+{% block title %}Account Settings{% endblock title %}
+{% block content %}
+    <div class="container mt-5 mb-5">
+        <div class="mb-5">
+            <h1 class="as-xe0 ms-1 mb-3">Account Settings</h1>
+            <h3 class="as-xe1 ms-1">Manage your Nakiese experience</h3>
+        </div>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-6 p-2">
+                    <div class="as-xee2 w-100 rounded-4 p-3">
+                        <div class="d-flex">
+                            <div class="mt-2 image-container">
+                                <img src="{% static 'images/Ellipse 11.svg' %}" width="50" height="50" class="image-1" alt="circle">
+                                <img src="{% static 'images/interface-user-add--actions-add-close-geometric-human-person-plus-single-up-user.svg' %}" width="20" height="20" class="icon-image" alt="icon">
+                            </div>
+                            <div class="pt-1 ms-2">
+                                <h2 class="as-xeee1">Personal Details</h2>
+                                <p style="font-size:14px;">Update your information and find out how it’s used.</p>
+                                <a style="cursor:pointer; text-decoration: none;"  id="account-personal" class="text-primary" >Manage personal details</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 p-2">
+                    <div class="as-xee2 w-100 rounded-4 p-3">
+                        <div class="d-flex">
+                            <div class="mt-2 image-container">
+                                <img src="{% static 'images/Ellipse 11.svg' %}" width="50" height="50" class="image-1" alt="">
+                                <img src="{% static 'images/interface-lock-shield--combination-combo-lock-locked-padlock-secure-security-shield-keyhole.svg' %}" width="20" height="20" class="icon-image" alt="">
+                            </div>
+                            <div class="pt-1 ms-2">
+                                <h2 class="as-xeee1">Security</h2>
+                                <p style="font-size:14px;">Change your security settings, set up secure authentication or delete your account.</p>
+                                <a style="cursor:pointer;  text-decoration: none;"  id="account-security" class="text-primary">Manage Security</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6 p-2">
+                    <div class="as-xee2 w-100 rounded-4 p-3">
+                        <div class="d-flex">
+                            <div class="mt-2 image-container">
+                                <img src="{% static 'images/Ellipse 11.svg' %}" width="50" height="50" class="image-1" alt="">
+                                <img src="{% static 'images/vuesax/linear/notification.svg' %}" width="20" height="20" class="icon-image" alt="">
+                            </div>
+                            <div class="pt-1 ms-2">
+                                <h2 class="as-xeee1">Email Notification</h2>
+                                <p style="font-size:14px;">This is the email address you use to sign in. It’s also where we send your booking confirmations.</p>
+                                <a style="cursor:pointer;  text-decoration: none;" id="account-notification" class="text-primary">Manage email notification</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 p-2">
+                    <div class="as-xee2 w-100 rounded-4 p-3">
+                        <div class="d-flex">
+                            <div class="mt-2 image-container">
+                                <img src="{% static 'images/Ellipse 11.svg' %}" width="50" height="50" class="image-1" alt="">
+                                <img src="{% static 'images/money-cash-bill-3--accounting-billing-payment-finance-cash-currency-money-bill.svg' %}" width="20" height="20" class="icon-image" alt="">
+                            </div>
+                            <div class="pt-1 ms-2">
+                                <h2 class="as-xeee1">Payment Details</h2>
+                                <p style="font-size:14px;">Securely add or remove payment methods to make it easier when you book.</p>
+                                <a style="cursor:pointer;  text-decoration: none;" id="account-payment" class="text-primary">Manage Payment Details</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 p-2">
+                    <div class="as-xee2 w-100 rounded-4 p-3">
+                        <div class="d-flex">
+                            <div class="mt-2 image-container">
+                                <img src="{% static 'images/Ellipse 11.svg' %}" width="50" height="50" class="image-1" alt="">
+                                <img src="{% static 'images/vuesax/linear/setting-4.svg' %}" width="20" height="20" class="icon-image" alt="">
+                            </div>
+                            <div class="pt-1 ms-2">
+                                <h2 class="as-xeee1">Preferences</h2>
+                                <p style="font-size:14px;">Change your language, currency and accessibility requirements.</p>
+                                <a style="cursor:pointer;  text-decoration: none;"  id="account-preferences" class="text-primary">Manage Preferences</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endblock content %}

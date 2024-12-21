@@ -1,0 +1,660 @@
+{% extends "base/en/base.html" %}
+{% load static %}
+{% block title %}Room Details{% endblock title %}
+{% block content %}
+
+<section style="margin-bottom: 80px; background-color: #4B75A5; padding: 20px; max-height: auto;">
+  <div class="cover d-flex justify-content-center align-items-center">
+    <div class="w-100">
+      <div class="mb-4 text-center mt-5"> <!-- Adjusted margin-bottom -->
+        <h1 style="font-size: 2rem; font-weight: bold;" class="text-light">Discover Your Ideal Stay – Search Available
+          Hotel Rooms</h1>
+      </div>
+
+      <!-- Added margin-top to create space between text and row -->
+      <div class="container mt-5 ps-4 pe-4">
+        <div class="container">
+          <div class="row bg-light mt-4 justify-content-center p-3 search-bar">
+            <div class="col-lg-11">
+              <div class="row" id="search__b">
+
+                <div class="col-lg-4 mt-0 position-relative" style="border-right: 2px solid rgb(179, 179, 179);">
+                  <h6 class="text-muted">Où allez-vous ?</h6>
+                  <input type="text" id="cityInput" placeholder="Chercher une destination" autocomplete="off">
+                  <ul class="dropdown-menu w-100" id="cityDropdown"></ul>
+                </div>
+                <div class="col-lg-4 mt-0" style="border-right: 2px solid rgb(179, 179, 179);">
+                  <h6 class="text-muted">Date </h6>
+                  <input type="text" id="dateInputg" class="search-land" placeholder="Ajouter une date">
+                </div>
+                <div class="col-lg-4 mt-0">
+                  <h6 class="text-muted">Nbre de personne</h6>
+                  <input type="number" id="capacityInput" placeholder="Ajouter">
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-1 d-flex justify-content-center align-items-center">
+
+
+              <button id="searchButton"
+                class="btn btn-dark rounded-pill d-flex justify-content-center align-items-center"
+                style="width: 40px; height: 40px;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-search"
+                  viewBox="0 0 16 16">
+                  <path
+                    d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="container">
+  <div class="row">
+    <div class="col-lg-4">
+      <div class="card p-0" style="width: 100%; border: none;">
+        <div class="card-body border mb-1">
+          <h4 class="card-title">Filters by</h4>
+          <div class="mb-2 p-2">
+            <label for="customRange1" class="form-label ms-0">Price range</label>
+            <div class="d-flex justify-content-between">
+              <span style="font-weight: bold;">1000</span>
+              <span style="font-weight: bold;">30000</span>
+            </div>
+            <input type="range" class="form-range" min="1000" step="1000" max="30000" id="customRange1"
+              oninput="updatePrice(this.value)">
+          </div>
+          <div class="mt-2">
+            <h4>Selected Price: <span id="priceDisplay">1000</span></h4>
+          </div>
+        </div>
+        <div class="card-body border mb-1">
+          <h4 class="card-title">Filters by</h4>
+          <ul class="ps-1" style="list-style: none;">
+            <li>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="1" id="amenitywifi">
+                <label class="form-check-label mt-1" for="amenitywifi"> Wifi </label>
+              </div>
+            </li>
+            <li>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="2" id="amenitypiscine">
+                <label class="form-check-label mt-1" for="amenitypiscine"> Piscine </label>
+              </div>
+            </li>
+            <li>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="3" id="amenitysport">
+                <label class="form-check-label mt-1" for="amenitysport"> Salle de sport </label>
+              </div>
+            </li>
+            <li>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="4" id="amenitytv">
+                <label class="form-check-label mt-1" for="amenitytv"> TV </label>
+              </div>
+            </li>
+            <li>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="5" id="amenityparking">
+                <label class="form-check-label mt-1" for="amenityparking"> Parking gratuit </label>
+              </div>
+            </li>
+            <li>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="6" id="amenitynetflix">
+                <label class="form-check-label mt-1" for="amenitynetflix"> Netflix </label>
+              </div>
+            </li>
+            <li>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="7" id="amenitybath">
+                <label class="form-check-label mt-1" for="amenitybath"> Bain chaud </label>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <div class="card-body border mb-1">
+          <h4 class="card-title">Filters by</h4>
+          <ul class="ps-1" style="list-style: none;">
+            <li>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="5" id="rating5">
+                <label class="form-check-label mt-1" for="rating5"> 5 star rating </label>
+              </div>
+            </li>
+            <li>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="4" id="rating4">
+                <label class="form-check-label mt-1" for="rating4"> 4 star rating </label>
+              </div>
+            </li>
+            <li>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="3" id="rating3">
+                <label class="form-check-label mt-1" for="rating3"> 3 star rating </label>
+              </div>
+            </li>
+            <li>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="2" id="rating2">
+                <label class="form-check-label mt-1" for="rating2"> 2 star rating </label>
+              </div>
+            </li>
+            <li>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="1" id="rating1">
+                <label class="form-check-label mt-1" for="rating1"> 1 star rating </label>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-8">
+      <div class="mb-4">
+        <h3><span id="destination"></span>: <span id="countFound"></span> tables found</h3>
+      </div>
+      <div class="mb-2" id="hotel_search__grid"></div>
+    </div>
+
+  </div>
+</div>
+{% endblock content %}
+
+{% block script %}
+const LanguageManager = (function () {
+  const DEFAULT_LANGUAGE = 'en';
+
+  function getLanguage() {
+      return localStorage.getItem('lang') || DEFAULT_LANGUAGE;
+  }
+
+  function setLanguage(lang) {
+      localStorage.setItem('lang', lang);
+  }
+
+  return {
+      getLanguage,
+      setLanguage
+  };
+})();
+  // Function to extract URL parameters and fetch search results
+  async function fetchSearchResults() {
+    const params = new URLSearchParams(window.location.search);
+    const cityName = params.get('city_name');
+    const availabilityFrom = params.get('availability_from');
+    const capacity = params.get('capacity');
+
+
+    const cityInput = document.getElementById("cityInput");
+    const capacityInput = document.getElementById("capacityInput");
+
+    if (cityInput) cityInput.value = cityName || '';
+    if (capacityInput) capacityInput.value = capacity || '';
+
+
+    // API URL
+    const apiUrl = `/posts/search/resturant?${params.toString()}`;
+
+    try {
+      // Fetch search results
+      const response = await fetch(apiUrl, {
+        method: 'GET',
+        headers: { 'Content-Type': 'application/json' }
+      });
+
+      // Check if response is okay
+      if (!response.ok) throw new Error(`Error: ${response.statusText}`);
+
+      const result = await response.json();
+      console.log(result);
+
+
+      // Calculate and display reviews, then render the rooms
+      renderTable(result, result.query_params);
+      console.log('render tables')
+      reviewCalAndDisplay(result);
+
+    } catch (error) {
+      console.error('Error fetching hotel rooms:', error);
+      alert('An error occurred while fetching search results. Please try again later.');
+    }
+  }
+
+
+
+  function displayReviews(av_reviews) {
+    const intReviews = Math.round(av_reviews);
+    let reviewFlex = '';
+    for (let i = 1; i <= intReviews; i++) {
+      reviewFlex += ` <div class="me-1">
+  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="gold" class="bi bi-star-fill"
+    viewBox="0 0 16 16">
+    <path
+      d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
+  </svg>
+  </div>`;
+    }
+    return reviewFlex;
+  }
+
+  // Render function to dynamically display hotel rooms
+  // Render function to dynamically display hotel rooms
+  function renderTable(table, cityName) {
+    const container = document.getElementById('hotel_search__grid');
+    const ex_c = document.getElementById("destination");
+    const ex_c_2 = document.getElementById("countFound");
+
+    if (!container || !ex_c || !ex_c_2) {
+      console.error("Required elements not found.");
+      return;
+    }
+
+    container.innerHTML = ''; // Clear previous results
+
+    // Check if the API response has results and handle missing results
+    if (!table || !table.results || table.results.length === 0) {
+      ex_c_2.innerText = "0";
+      container.innerHTML = `<img src='/static/images/image_processing20210917-4617-1u39vt2.gif' alt='Not Found'
+      class='h-100 w-100' />`;
+      return;
+    }
+
+    // Handle valid city names and results
+    ex_c.innerText = cityName?.hotel_city_name || "City not found";
+    ex_c_2.innerText = table.results.length;
+
+    container.innerHTML = generateGridItems(table.results);
+  }
+
+  // Function to generate grid items for the rooms
+  function generateGridItems(beds) {
+    if (!beds || beds.length === 0) {
+      return `<p>No results found</p>`;
+    }
+
+    let gridHTML = '';
+
+    beds.forEach((table) => {
+      const description = table.description || 'No description available';
+      const truncatedDescription = description.length > 138 ? description.substring(0, 138) + "..." : description;
+
+      gridHTML += `
+      <div class="mb-5">
+        <div class="mb-3">
+          <div class="card mb-3" style="max-width: 90%;">
+            <div class="row g-0">
+              <div class="col-md-4">
+                <a id="nak-${table.table_id}" data-targetnak="${table.table_id}" class="w-100 h-100" style="cursor: pointer;">
+                  <img src="${table.images}" class="img-fluid rounded-start h-100" alt="Room image" style=" min-height:225px;">
+                </a>
+              </div>
+              <div class="col-md-8">
+                <div class="card-body">
+                  <h5 class="card-title mb-0">
+                    <div class="d-flex justify-content-between align-items-center mb-1">
+                      <a id="nak-${table.table_id}-title" class="fs-4 nav-link" data-targetnak="${table.table_id}" style="cursor: pointer;">
+                        ${table.restaurant.name}
+                      </a>
+                      <span class="badge text-bg-primary" id="avg_rate_${table.table_id}">4.3</span>
+                    </div>
+                  </h5>
+                  <div class="d-flex justify-content-start align-items-center mb-3" id="re__flex-${table.table_id}">
+                  </div>
+                  <div class="d-flex justify-content-between align-items-center mb-3">
+                    <p class="card-text mb-0">${table.restaurant.city.name} ${table.restaurant.country}</p>
+                    <a id="nak-${table.table_id}-desc" data-targetnak="${table.table_id}" class="btn btn-primary">See Details</a>
+                  </div>
+                  <div class="mb-2">
+                    <p>${truncatedDescription}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    `;
+    });
+
+    return gridHTML;
+  }
+
+
+
+  // On page load, fetch search results
+  window.addEventListener('DOMContentLoaded', () => {
+    fetchSearchResults();
+  });
+
+  // Event listener for room detail links (image or hotel name)
+  document.addEventListener('click', function (e) {
+    // Traverse up to find the closest <a> tag with id starting with "nak-"
+    const anchor = e.target.closest('a[id^="nak-"]');
+
+    if (anchor) {
+      const targetId = anchor.dataset.targetnak;
+      if (targetId) {
+        window.location.href = `/nakiese/${LanguageManager.getLanguage()}/resturant/table/${targetId}`;
+      }
+    }
+  });
+
+  function updatePrice(value) {
+    document.getElementById('priceDisplay').innerText = value;
+  }
+  document.addEventListener('DOMContentLoaded', function () {
+    const checkboxes = document.querySelectorAll('.form-check-input');
+
+    // Load checkbox states from sessionStorage
+    loadCheckboxStates(checkboxes);
+
+    // Attach debounced event listener to all checkboxes
+    checkboxes.forEach(checkbox => {
+      checkbox.addEventListener('change', debounce(handleFilterChange, 300));
+    });
+  });
+
+  // Function to load and set checkbox states from sessionStorage
+  function loadCheckboxStates(checkboxes) {
+    checkboxes.forEach(checkbox => {
+      const isChecked = sessionStorage.getItem(checkbox.id) === 'true';
+      checkbox.checked = isChecked;
+    });
+  }
+
+  // Handle filter changes for both amenities and ratings
+  function handleFilterChange(event) {
+    // Store the checkbox state in sessionStorage
+    sessionStorage.setItem(event.target.id, event.target.checked);
+
+    console.log(`Checkbox ${event.target.id} changed to ${event.target.checked}`); // Log checkbox state change
+    applyFilters(); // Apply the filters on checkbox change
+  }
+
+  // Debounce function to limit excessive API calls
+  function debounce(fn, delay) {
+    let timeoutId;
+    return function (...args) {
+      clearTimeout(timeoutId);
+      timeoutId = setTimeout(() => fn.apply(this, args), delay);
+    };
+  }
+
+  // Apply filters by fetching filtered results
+  function applyFilters() {
+    const selectedFilters = collectSelectedFilters();
+    const { cityName, availabilityFrom, capacity } = getRequiredQueryParams();
+
+    if (!cityName || !availabilityFrom || !capacity) {
+      alert('Please fill in all required filters.');
+      return;
+    }
+
+
+
+    // Build query string for GET request
+    const queryString = buildQueryString({
+      cityName,
+      availabilityFrom,
+      capacity,
+      ...selectedFilters // Spread the collected filters
+    });
+
+
+    // Fetch filtered results and update UI
+    fetchFilteredResults(queryString);
+  }
+
+  // Collect selected filter values (amenities and ratings)
+  function collectSelectedFilters() {
+    const selectedAmenities = Array.from(document.querySelectorAll('.form-check-input:checked'))
+      .filter(checkbox => checkbox.id.startsWith('amenity')) // For amenities
+      .map(checkbox => checkbox.value);
+
+    const selectedRatings = Array.from(document.querySelectorAll('.form-check-input:checked'))
+      .filter(checkbox => checkbox.id.startsWith('rating')) // For ratings
+      .map(checkbox => checkbox.value);
+
+    return { selectedAmenities, selectedRatings };
+  }
+  // Get required query parameters from the URL
+  function getRequiredQueryParams() {
+    const params = new URLSearchParams(window.location.search);
+    return {
+      cityName: params.get('city_name'),
+      availabilityFrom: params.get('availability_from'),
+      availabilityTill: params.get('availability_till'),
+      capacity: params.get('capacity'),
+    };
+  }
+
+  function buildQueryString({ cityName, availabilityFrom, capacity, selectedAmenities, selectedRatings }) {
+    const queryString = new URLSearchParams({
+      city_name: cityName,
+      availability_from: availabilityFrom,
+      capacity: capacity,
+    });
+
+    // Append each room_amenities value as a separate parameter
+    selectedAmenities.forEach(amenity => {
+      queryString.append('room_amenities', amenity); // Appending individual room_amenities values
+    });
+
+    // Append each table_rating value as a separate parameter
+    selectedRatings.forEach(rating => {
+      queryString.append('table_rating', rating); // Appending individual table_rating values
+    });
+
+    return queryString.toString(); // Return the final query string
+  }
+  // Fetch filtered results and update the UI
+  function fetchFilteredResults(queryString) {
+
+    fetch(`/posts/search/resturant?${queryString}`, {
+      method: 'GET',
+      headers: { 'Content-Type': 'application/json' }
+    })
+      .then(response => {
+        if (!response.ok) throw new Error('Network response was not ok');
+        return response.json();
+      })
+      .then(data => updateUI(data, new URLSearchParams(queryString)))
+      .catch(error => handleFetchError(error));
+  }
+
+  // Update the UI with filtered results
+  function updateUI(data, queryString) {
+    const roomListContainer = document.getElementById('hotel_search__grid');
+    roomListContainer.innerHTML = ''; // Clear the container
+
+    if (Array.isArray(data.results) && data.results.length > 0) {
+      roomListContainer.innerHTML = generateGridItems(data.results);
+      updateSearchMeta(data, queryString);
+      reviewCalAndDisplay(data);
+    } else {
+      showNotFoundImage(roomListContainer);
+      updateSearchMeta(data, queryString);
+    }
+  }
+
+  // Update search metadata (city name, count, etc.)
+  function updateSearchMeta(data, queryString) {
+    const cityNameElem = document.getElementById("destination");
+    const countElem = document.getElementById("countFound");
+
+    const cityName = queryString.get('hotel_city_name') || 'City not found';
+    const resultCount = data.results ? data.results.length : 0;
+
+    cityNameElem.innerText = cityName;
+    countElem.innerText = resultCount;
+  }
+
+  // Show a 'not found' image when no results are found
+  function showNotFoundImage(container) {
+    const img = document.createElement('img');
+    img.src = '/static/images/image_processing20210917-4617-1u39vt2.gif';
+    img.alt = 'Not Found';
+    img.classList.add('h-100', 'w-100');
+    container.append(img);
+  }
+
+  // Handle fetch-related errors
+  function handleFetchError(error) {
+    console.error('Error fetching filtered data:', error);
+    alert('An error occurred while applying filters.');
+  }
+
+  function reviewCalAndDisplay(obj) {
+    if (!obj?.results?.length) {
+      console.error("Missing or empty results data");
+      return;
+    }
+
+    let overallAverage = 0; // Variable to store overall average rating
+    let totalTables = 0; // Variable to count total tables with reviews
+
+    obj.results.forEach(table => {
+      const { table_id, review } = table;
+
+      if (!review?.length) {
+        console.log(`No reviews found for table ${table_id}`);
+        return;
+      }
+
+      const ratingSums = {};
+      const ratingCounts = {};
+      let sumOfAverages = 0;
+      let ratingTypesCount = 0;
+
+      review.forEach(singleReview => {
+        singleReview.rating.forEach(({ name, rate }) => {
+          ratingSums[name] = (ratingSums[name] || 0) + parseFloat(rate);
+          ratingCounts[name] = (ratingCounts[name] || 0) + 1;
+        });
+      });
+
+      for (const type in ratingSums) {
+        const averageRating = (ratingSums[type] / ratingCounts[type]).toFixed(1);
+        sumOfAverages += parseFloat(averageRating);
+        ratingTypesCount++;
+      }
+
+      const finalAverage = (sumOfAverages / ratingTypesCount).toFixed(1);
+      overallAverage += parseFloat(finalAverage); // Add to overall average
+      totalTables++; // Increment total tables with reviews
+
+      // Use the unique ID for the review display
+      const reviewElement = document.getElementById(`re__flex-${table_id}`);
+      if (reviewElement) {
+        reviewElement.innerHTML = displayReviews(finalAverage);
+      }
+
+      // Update the average rating in the badge for this table
+      const avgRateElement = document.getElementById(`avg_rate_${table_id}`);
+      if (avgRateElement) {
+        avgRateElement.innerText = finalAverage; // Update the badge with average rating for this table
+      }
+    });
+
+    // Set the overall average rating
+    if (totalTables > 0) {
+      const avgRating = (overallAverage / totalTables).toFixed(1);
+      const avgRateElement = document.getElementById("avg_rate");
+      if (avgRateElement) {
+        avgRateElement.innerText = avgRating; // Update the badge with overall average rating
+      }
+    } else {
+      const avgRateElement = document.getElementById("avg_rate");
+      if (avgRateElement) {
+        avgRateElement.innerText = "No ratings"; // Handle case with no ratings
+      }
+    }
+  }
+
+  let debounceTimer;
+
+  document.getElementById('customRange1').addEventListener('change', function () {
+    // Clear any previous debounce timers
+    clearTimeout(debounceTimer);
+
+    debounceTimer = setTimeout(() => {
+      const params = new URLSearchParams(window.location.search);
+      const cityName = params.get('city_name');
+      const availabilityFrom = params.get('availability_from');
+
+      const capacity = params.get('capacity');
+
+      // Validate required fields
+      if (!cityName || !availabilityFrom || !capacity) {
+        alert('Please fill in all required filters.');
+        return;
+      }
+
+      // Build the query string for the GET request
+      const queryString = new URLSearchParams({
+        city_name: cityName,
+        availability_from: availabilityFrom,
+        capacity: capacity,
+        price: document.getElementById('customRange1').value,
+      });
+
+      // Fetch filtered results
+      fetch(`/posts/search/hotel?${queryString}`, {
+        method: 'GET',
+        headers: { 'Content-Type': 'application/json' }
+      })
+        .then(response => {
+          if (!response.ok) {
+            throw new Error('Network response was not ok');
+          }
+          return response.json();
+        })
+        .then(data => {
+          const roomListContainer = document.getElementById('hotel_search__grid'); // Container for room list
+          roomListContainer.innerHTML = '';
+
+          if (Array.isArray(data.results)) {
+            // Generate and insert room list HTML
+            roomListContainer.innerHTML = generateGridItems(data.results); // Assuming this function exists and works
+
+            reviewCalAndDisplay(data); // Assuming this is necessary for additional UI updates
+            updateSummary(data.results.length, queryString);
+
+          } else {
+            console.error('Expected an array in results but got:', data.results);
+            alert('Unexpected response format. Please try again later.');
+          }
+        })
+        .catch(error => {
+          console.error('Error:', error);
+          alert('Error fetching hotel rooms. Please try again later.');
+        });
+    }, 300); // Debounce delay to prevent rapid API calls
+  });
+
+  function updateSummary(resultCount, queryString) {
+    const container_ex = document.getElementById('hotel_search__grid');
+    let ex_c = document.getElementById("destination");
+    let ex_c_2 = document.getElementById("countFound");
+
+    if (resultCount === 0) {
+      ex_c_2.innerText = "0";
+      let img = document.createElement('img');
+      img.src = '/static/images/image_processing20210917-4617-1u39vt2.gif';
+      img.alt = "Not Found";
+      img.classList.add('h-100', 'w-100');
+      container_ex.append(img);
+      return;
+    }
+
+    ex_c.innerText = queryString.get('hotel_city_name') || "City not found";
+    ex_c_2.innerText = resultCount;
+  }
+{% endblock script %}

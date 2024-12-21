@@ -1,0 +1,205 @@
+{% extends "base/en/base.html" %}
+{% load static %}
+{% block title %}Resturants{% endblock title %}
+{% block style %}
+
+/* Hide the spinner arrows in input[type=number] for Chrome, Safari, Edge, and Opera */
+input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Hide the spinner arrows in Firefox */
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+{% endblock style %}
+{% block content %}
+<div class="container mt-5 ps-5 pe-5" style="margin-bottom: 100px;">
+  <div class="container ps-4 pe-4 rounded-4" style="box-shadow: rgba(0, 0, 0, 0.08) 0px 4px 12px;">
+    <div class="row mt-4 justify-content-center p-3 pt-4 pb-4 search-bar rounded-4">
+      <div class="col-lg-10">
+        <div class="row" id="search__b">
+
+          <div class="col-lg-4 mt-0 position-relative sm-search mt-0nk-sid-br">
+            <h6 class="text-muted">Où allez-vous ?</h6>
+            <input type="text" id="cityInput" 
+              placeholder="Chercher une destination" autocomplete="off">
+            <ul class="dropdown-menu w-100" id="cityDropdown"></ul>
+          </div>
+          <div class="col-lg-4 mt-0 sm-search mt-0nk-sid-br">
+            <h6 class="text-muted">Date </h6>
+            <input type="text" id="dateInputg" class="search-land" placeholder="Ajouter une date">
+          </div>
+          <div class="col-lg-4 mt-0 sm-search mt-0nk-sid-br">
+            <h6 class="text-muted">Nbre de personne</h6>
+            <input type="number" id="capacityInput"  placeholder="Ajouter">
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-1 d-flex justify-content-center align-items-center">
+
+        <button class="btn btn-dark rounded-pill d-flex justify-content-center align-items-center"
+          style="width: 40px; height: 40px;">
+          <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-sliders"
+            viewBox="0 0 16 16">
+            <path fill-rule="evenodd"
+              d="M11.5 2a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3M9.05 3a2.5 2.5 0 0 1 4.9 0H16v1h-2.05a2.5 2.5 0 0 1-4.9 0H0V3zM4.5 7a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3M2.05 8a2.5 2.5 0 0 1 4.9 0H16v1H6.95a2.5 2.5 0 0 1-4.9 0H0V8zm9.45 4a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3m-2.45 1a2.5 2.5 0 0 1 4.9 0H16v1h-2.05a2.5 2.5 0 0 1-4.9 0H0v-1z" />
+          </svg>
+        </button>
+
+        <div class="container">
+          <div class="overlay"></div>
+          <div class="mega-menu p-3 custom-dropdown">
+            <div class="mb-3">
+              <h5>Plage des prix</h5>
+            </div>
+            <div class="mb-4">
+              <h6> Prix total par nuit par nombre des personnes </h6>
+              <form action="#">
+                <div class="row">
+                  <div class="col-lg-6 mb-2" style="position: relative;">
+                    <div class="custom-label">
+                      <p class="mb-0">Minimum</p>
+                      <p class="mb-0">$ 100</p>
+                    </div>
+                    <input type="number" class="fm-ctrl">
+                  </div>
+                  <div class="col-lg-6 mb-2" style="position: relative;">
+                    <div class="custom-label">
+                      <p class="mb-0">Minimum</p>
+                      <p class="mb-0">$ 100</p>
+                    </div>
+                    <input type="number" class="fm-ctrl">
+                  </div>
+                </div>
+
+              </form>
+            </div>
+            <div class="mb-4">
+              
+              <div class="mb-3">
+                <h6>Personne</h6>
+                <div class="d-flex justify-content-start align-items-center flex-wrap">
+                  <button class="btn btn-outline-dark rounded-pill pt-1 pb-1 ps-3 pe-3 me-3">1</button>
+                  <button class="btn btn-outline-dark rounded-pill pt-1 pb-1 ps-3 pe-3 me-3">2</button>
+                  <button class="btn btn-outline-dark rounded-pill pt-1 pb-1 ps-3 pe-3 me-3">3</button>
+                  <button class="btn btn-outline-dark rounded-pill pt-1 pb-1 ps-3 pe-3 me-3">4</button>
+                  <button class="btn btn-outline-dark rounded-pill pt-1 pb-1 ps-3 pe-3 me-3">5</button>
+                  <button class="btn btn-outline-dark rounded-pill pt-1 pb-1 ps-3 pe-3 me-3">6</button>
+                  <button class="btn btn-outline-dark rounded-pill pt-1 pb-1 ps-3 pe-3 me-3">7</button>
+                  <button class="btn btn-outline-dark rounded-pill pt-1 pb-1 ps-3 pe-3 me-3">8</button>
+                  <button class="btn btn-outline-dark rounded-pill pt-1 pb-1 ps-3 pe-3 me-3">9</button>
+                  <button class="btn btn-outline-dark rounded-pill pt-1 pb-1 ps-3 pe-3 me-3">10</button>
+
+                </div>
+              </div>
+
+
+            </div>
+            <div class="mb-2">
+              <h5>Commodités</h5>
+              <div class="mb-2">
+                <div class="d-flex align-items-start">
+                  <div class="me-5 text-start">
+                    <div class="form-check d-flex align-items-center">
+                      <input class="form-check-input" type="checkbox" name="in2" id="in2">
+                      <label class="form-check-label" for="in2">Wifi</label>
+                    </div>
+                    <div class="form-check d-flex align-items-center">
+                      <input class="form-check-input" type="checkbox" name="in3" id="in3">
+                      <label class="form-check-label" for="in3">Salle de sport</label>
+                    </div>
+                    <div class="form-check d-flex align-items-center">
+                      <input class="form-check-input" type="checkbox" name="in4" id="in4">
+                      <label class="form-check-label" for="in4">Parking gratuit</label>
+                    </div>
+                    <div class="form-check d-flex align-items-center">
+                      <input class="form-check-input" type="checkbox" name="in5" id="in5">
+                      <label class="form-check-label" for="in5">Bain chaud</label>
+                    </div>
+                  </div>
+                  <div class="me-5 text-start">
+                    <div class="form-check d-flex align-items-center">
+                      <input class="form-check-input" type="checkbox" name="in6" id="in6">
+                      <label class="form-check-label" for="in6">Piscine</label>
+                    </div>
+                    <div class="form-check d-flex align-items-center">
+                      <input class="form-check-input" type="checkbox" name="in7" id="in7">
+                      <label class="form-check-label" for="in7">TV</label>
+                    </div>
+                    <div class="form-check d-flex align-items-center">
+                      <input class="form-check-input" type="checkbox" name="in8" id="in8">
+                      <label class="form-check-label" for="in8">Netflix</label>
+                    </div>
+                    <div class="form-check d-flex align-items-center">
+                      <input class="form-check-input" type="checkbox" name="in9" id="in9">
+                      <label class="form-check-label" for="in9">Permission de fumer</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="mb-2 text-center">
+              <button class="btn btn-dark w-25 m-auto">Apply</button>
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+      <div class="col-lg-1 d-flex justify-content-center align-items-center">
+
+        <button id="searchButton"
+                class="btn btn-dark rounded-pill d-flex justify-content-center align-items-center"
+                style="width: 40px; height: 40px;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-search"
+                  viewBox="0 0 16 16">
+                  <path
+                    d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
+                </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container custom-margin-1 custom-margin-2 mb-5">
+  <div class="mb-4">
+    <h4>Trending now</h4>
+  </div>
+  <div class="row row-cols-lg-4 row-cols-md-2 row-cols-sm-1 g-4" id="table__grid"></div>
+
+</div>
+{% comment %} <div class="mt-5 text-center" style="margin-bottom: 50px;">
+  <button class="btn btn-outline-dark"> Charger encore plus
+  </button>
+</div> {% endcomment %}
+<div class="container mb-5">
+  <div class="mb-3">
+    <h4>Famous Cities</h4>
+  </div>
+  <div class="row row-cols-1 row-cols-md-5 g-4 " id="city_grid__table">
+
+
+</div>
+</div>
+
+{% endblock content %}
+{% block script %}
+
+document.querySelector('.btn.btn-dark.rounded-pill').addEventListener('click', function () {
+    // Toggle dropdown visibility
+    document.querySelector('.custom-dropdown').classList.toggle('show');
+
+    // Toggle overlay visibility
+    document.querySelector('.overlay').classList.toggle('show');
+});
+
+// Optional: Add click event to the overlay to close the dropdown when clicking outside
+document.querySelector('.overlay').addEventListener('click', function () {
+    document.querySelector('.custom-dropdown').classList.remove('show');
+    document.querySelector('.overlay').classList.remove('show');
+});
+{% endblock script %}

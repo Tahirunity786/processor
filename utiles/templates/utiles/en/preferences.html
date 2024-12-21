@@ -1,0 +1,56 @@
+{% extends "base/en/base.html" %}
+{% load static %}
+{% block css %}
+<link href="{% static 'css/nek0iese.css' %}" rel="stylesheet">
+{% endblock css %}
+{% block title %}Settings - Prederences{% endblock title %}
+{% block content %}
+    <div class="container mt-5 mb-5">
+        <div class="row">
+            {% include "component/link-box.html" %}
+            <div class="col-lg-8">
+                <div class="mb-4">
+                    <h1 class="as-xe01 ms-1 mb-3">Preferences</h1>
+                    <h5 class="as-xe001 ms-1">Change your language, currency and accessibility requirements. </h5>
+                </div>
+                <div class="line"></div>
+                <div class="mb-5">
+                    <div class="row mt-3 mb-3 align-items-center">
+                        <div class="col-lg-2">
+                            <h6 class="mt-1 mb-0" style="font-size: 0.85rem; font-weight: bold;">Currency</h6>
+                        </div>
+                        <div class="col-lg-10 mb-1">
+                            <div class="d-flex justify-content-between align-items-center mt-2">
+                                <div>
+                                    <p class="m-0" style="font-size: 0.8rem;">$ Dollar</p>
+                                </div>
+                                <div>
+                                    <a href="#" style="text-decoration: none;">Edit</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="line"></div>
+                    <div class="row mt-3 mb-3 align-items-center">
+                        <div class="col-lg-2">
+                            <h6 class="mt-1 mb-0" style="font-size: 0.85rem; font-weight: bold;">Language</h6>
+                        </div>
+                        <div class="col-lg-10 mb-1">
+                            <div class="d-flex justify-content-between align-items-center mt-2">
+                                <div>
+                                    <p class="m-0" style="font-size: 0.8rem;">American English</p>
+                                </div>
+                                <div>
+                                    <a href="#" style="text-decoration: none;">Edit</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                   
+                </div>
+                
+            </div>
+        </div>
+    </div>
+
+    {% endblock content %}

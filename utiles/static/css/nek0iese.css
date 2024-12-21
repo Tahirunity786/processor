@@ -1,0 +1,258 @@
+.as-xee2 {
+    background-color: #F5F5F5;
+}
+
+.as-xeee2 {
+    font-size: 1.125rem;
+}
+
+.as-xeee1 {
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+.as-xec1 {
+    font-size: 1.25rem;
+}
+
+.image-container {
+    position: relative;
+    width: 50px;
+    height: 50px;
+}
+
+.image-1 {
+    position: relative;
+    z-index: 1;
+}
+
+.icon-image {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+}
+
+.line {
+    height: 2px;
+    width: 100%;
+    background-color: #C7C7C7;
+}
+
+.p-xe01 {
+    height: 40px;
+    border-radius: 50px;
+    outline: none;
+    border: 1px solid #8B8B8B;
+    padding: 8px 20px;
+}
+
+.custom-select {
+    appearance: none;
+    /* Remove default styling */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background: url('/assets/images/interface-arrows-button-down--arrow-down-keyboard.png') no-repeat right 10px center;
+    background-color: #fff;
+    /* Set background color */
+    padding-right: 30px;
+    /* Adjust padding to make room for the arrow */
+
+}
+
+.p-xee01 {
+    border-radius: 10px;
+}
+
+.p-x10 {
+    border: 2px solid #F3F3F3;
+    height: auto;
+    border-radius: 30px;
+}
+
+.p-xe-16 {
+    border: 2px solid #F3F3F3;
+    height: auto;
+    border-radius: 30px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.p-x11 {
+    font-weight: bold;
+    font-weight: 1.5rem;
+}
+
+.p-x13 {
+    width: 25%;
+    height: 110px;
+    background-color: #C7C7C7;
+    border-radius: 20px;
+}
+
+.p-x14 {
+    width: 65%;
+}
+
+.p-x15 {
+    width: 60%;
+}
+
+.p-x16 {
+    width: 30%;
+    font-size: smaller;
+    margin-right: 10px;
+}
+
+.p-x17 {
+    font-size: 1rem;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.bg-p {
+    background-color: #C7C7C7;
+    height: 100px;
+    width: 100%;
+    border-radius: 20px;
+
+}
+
+.p-xeee-btn {
+    outline: none;
+    border: 2px solid #4B75A5;
+    background-color: white;
+    height: 40px;
+    width: 100%;
+    border-radius: 50px;
+}
+
+.p-xeeee-btn {
+    height: 50px;
+    width: 170px;
+    border: none;
+    outline: none;
+    background-color: #4B75A5;
+    border-radius: 50px;
+    color: white;
+    font-size: medium;
+}
+
+.p-xeee-btn:focus {
+    border: none;
+    background-color: #4B75A5;
+    color: white;
+}
+
+.p-xeeee-btn:hover {
+    background-color: #5989c1;
+}
+
+.bg-p25 {
+    border: none;
+    outline: none;
+    background-color: #4B75A5;
+    border-radius: 50px;
+    color: white;
+    font-size: medium;
+    width: 100%;
+    height: 40px;
+}
+
+.bg-p25:hover {
+    background-color: #5989c1;
+}
+
+.p-xee-01 {
+    font-size: 0.8125rem;
+}
+
+.cf-xe2 html {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+.bg-p23,
+.bg-p24 {
+    color: white;
+    text-decoration: none;
+    border-radius: 20px;
+    display: block;
+    height: 60px;
+    width: 100%;
+    padding: 17px 0px;
+    background-color: #3F556D;
+}
+
+.bg-p24 {
+    background-color: white;
+    border: 2px solid #3F556D;
+    color: black;
+}
+
+.bg-p23:hover {
+    background-color: #4B75A5;
+    text-decoration: none;
+    color: #fff;
+}
+
+.bg-p24:hover {
+    background-color: #4B75A5;
+    text-decoration: none;
+    color: #fff;
+    border: none;
+}
+
+.nav-rs {
+    display: flex;
+}
+
+.nav-burger {
+    display: none;
+}
+
+.fade.show {
+    opacity: 0;
+}
+
+.bg-res {
+    background-color: #C7C7C7;
+}
+.bg-rest{
+    background: #F3F3F3;
+    height: 130px;
+    border-radius: 20px;
+}
+.bg-rest-1{
+    background: #F3F3F3;
+    height: auto;
+    border-radius: 20px;
+    padding: 20px;
+}
+.nav-links {
+    display: flex;
+    gap: 22px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    border-radius: 50px;
+    border: 1px solid #DDDDDD;
+}
+@media (min-width:992px) {
+    .fts-xe2 {
+        margin-left: 8rem;
+    }
+
+    .fts-xe4 {
+        text-align: end;
+    }
+
+    .fts-xxe1 {
+        margin-left: 40px;
+    }
+
+
+}

@@ -1,0 +1,31 @@
+.nak-re-btn{
+    display: none;
+}
+.nk-sid-br{
+    border-right: 2px solid rgb(179, 179, 179);
+}
+
+@media (max-width:992px) {
+    .nak-res-nav {
+        display: none !important;
+    }
+    .nak-re-btn{
+        display: block;
+        width: 40px;
+        height: 40px;
+    }
+    .nk-sid-br{
+        border: none;
+    }
+    main{
+        height: auto;
+    }
+    main .cover{
+        padding: 15px;
+    }
+   
+}
+
+@media (min-width: 380px) and (max-width: 768px) {
+    
+}

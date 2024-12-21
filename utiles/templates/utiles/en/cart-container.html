@@ -1,0 +1,77 @@
+{% extends "base/en/base.html" %}
+{% load static %}
+
+{% block title %}Cart{% endblock title %}
+{% block content %}
+
+
+<section class="container" style="margin-bottom: 50px; margin-top: 50px;">
+    <div class="row">
+        <div class="col-lg-8 mb-4">
+            <div class="card" style="margin-bottom: 50px;">
+                <div class="card-body">
+                    <div class="mb-3">
+                        <h5 style="color: #4B75A5;">Exclusive discounts for Members </h5>
+                    </div>
+                    <div class="mb-2">
+                        <p class="mb-0">Unlock exclusive discounts and special offers when you <a href="/register"
+                            class="btn btn-primary">Sign Up</a> or <a href="/login"
+                                style="text-decoration: none;">Login</a></p>
+                    </div>
+                </div>
+            </div>
+            <div id="sel__rooms_sec"></div>
+            <div id="sel__table_sec"></div>
+        </div>
+
+        <!-- Summary -->
+        <div class="col-lg-4 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="mb-2">Summary</h4>
+                    <a class="nav-link mb-2" data-bs-toggle="collapse" href="#collapseExample" role="button"
+                        aria-expanded="false" aria-controls="collapseExample">
+                        Do you have promo code
+                        <span>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-chevron-down" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd"
+                                    d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708" />
+                            </svg>
+                        </span>
+                    </a>
+                    <div class="collapse mt-2 mb-2" id="collapseExample">
+                        <div class="card card-body">
+                            <div class="mb-3">
+                                <input type="text" class="form-control" id="p-code" placeholder="Promo Code">
+                            </div>
+                            <button class="btn btn-dark">Apply Code</button>
+                        </div>
+                    </div>
+
+                    <div class="mb-2 d-flex align-items-center justify-content-between">
+                        <p class="mb-0">Subtotal</p>
+                        <p class="mb-0" id="sub___total">0$</p>
+                    </div>
+                    <div class="mb-5 d-flex align-items-center justify-content-between">
+                        <p class="mb-0">Estimated Tax</p>
+                        <p class="mb-0">0$</p>
+                    </div>
+                    <hr>
+                        <div class="mb-2 mt-3 d-flex align-items-center justify-content-between">
+                            <h4 class="mb-0">Total<h4>
+                                <p class="mb-0" id="G___total">0$</p>
+                            </div>
+                        </div>
+                </div>
+                <div class="mb-2 mt-4">
+                    <button class="btn pt-2 pb-2 btn-dark rounded-pill w-100" id="sum__checkout">Checkout</button>
+                </div>
+            </div>
+        </div>
+</section>
+{% endblock content %}
+
+{% block js %}
+<script src="{% static 'js/cart_ex.js' %}"></script>
+{% endblock js %}

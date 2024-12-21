@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>New Booking Notification</title>
+    <style>
+      /* General Reset */
+      body,
+      h1,
+      h2,
+      h3,
+      p,
+      a {
+        margin: 0;
+        padding: 0;
+        line-height: 1.5;
+      }
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #f9fafc;
+        color: #333333;
+        margin: 0;
+        padding: 0;
+      }
+      a {
+        text-decoration: none;
+      }
+      /* Container */
+      .email-container {
+        max-width: 600px;
+        margin: 40px auto;
+        background-color: #ffffff;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      }
+      /* Header */
+      .header {
+        background-color: #2b3b48;
+        color: #ffffff;
+        text-align: center;
+        padding: 30px 20px;
+      }
+      .header img {
+        max-height: 70px;
+        margin-bottom: 10px;
+      }
+      .header h1 {
+        font-size: 26px;
+        font-weight: bold;
+        margin: 0;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+      /* Content */
+      .content {
+        padding: 30px 20px;
+        color: #555555;
+      }
+      .content h2 {
+        font-size: 22px;
+        color: #2b3b48;
+        margin-bottom: 15px;
+        font-weight: 600;
+      }
+      .content p {
+        font-size: 16px;
+        margin-bottom: 20px;
+      }
+      .booking-details {
+        background-color: #f4f7fb;
+        border: 1px solid #dbe2ea;
+        border-radius: 8px;
+        padding: 20px;
+        margin-bottom: 25px;
+      }
+      .booking-details p {
+        margin: 8px 0;
+        font-size: 15px;
+        color: #333333;
+      }
+      .booking-details strong {
+        color: #2b3b48;
+      }
+      /* CTA Button */
+      .cta-button {
+        display: inline-block;
+        padding: 12px 20px;
+        background-color: #4a5c6a;
+        color: #ffffff;
+        border-radius: 6px;
+        font-size: 16px;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        font-weight: 600;
+        text-align: center;
+      }
+      .cta-button:hover {
+        background-color: #2b3b48;
+      }
+      /* Footer */
+      .footer {
+        background-color: #2b3b48;
+        color: #ffffff;
+        text-align: center;
+        padding: 20px;
+        font-size: 14px;
+      }
+      .footer a {
+        color: #ffffff;
+        text-decoration: underline;
+      }
+      /* Responsive */
+      @media screen and (max-width: 600px) {
+        .content {
+          padding: 20px 15px;
+        }
+        .header h1 {
+          font-size: 22px;
+        }
+        .cta-button {
+          width: 100%;
+          text-align: center;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Email Container -->
+    <div class="email-container">
+      <!-- Header -->
+      <div class="header">
+        <img src="{{logo_url}}" alt="Company Logo" />
+        <h1>New Booking Alert</h1>
+      </div>
+
+      <!-- Content -->
+      <div class="content">
+        <h2>Dear [Owner's Name],</h2>
+        <p>
+          A new booking has been made for your property. Please find the
+          details below:
+        </p>
+
+        <!-- Booking Details -->
+        <div class="booking-details">
+          <p><strong>Booking ID:</strong> #123456</p>
+          <p><strong>Customer Name:</strong> [User's Full Name]</p>
+          <p><strong>Type:</strong> [Room / Restaurant Table]</p>
+          <p><strong>Date:</strong> [Booking Date]</p>
+          <p><strong>Time:</strong> [Booking Time]</p>
+          <p><strong>Guests:</strong> [Number of Guests]</p>
+          <p><strong>Contact:</strong> [Customer's Phone / Email]</p>
+        </div>
+
+        <p>
+          Kindly ensure everything is prepared for the guest's arrival. If you
+          have any questions, please reach out to the customer directly.
+        </p>
+
+       
+      </div>
+
+      <!-- Footer -->
+      <div class="footer">
+        <p>
+          &copy; 2024 Your Company Name. All Rights Reserved. <br />
+          <a href="https://example.com">Visit Our Website</a>
+        </p>
+      </div>
+    </div>
+  </body>
+</html>

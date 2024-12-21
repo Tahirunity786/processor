@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/butterup.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/auth.css' %}">
+    <title>Sign up</title>
+</head>
+
+<body>
+    <div class="b-1erte d-flex justify-content-center align-items-center">
+        <div class="b-2erte">
+            <div class="b-3erte">
+                <div class="mb-4">
+                    <h1 class="text-light bf2">Sign Up</h1>
+                </div>
+                <div class="mb-4">
+                    <p class="bf3 text-light">
+                        Nakiese est votre portail pour découvrir et profiter des trésors cachés de l'Afrique.
+                        Que ce soit pour trouver l'hébergement parfait ou savourer une cuisine locale, Nakiese rend la
+                        vie facile et joyeuse.
+                        <br><b>Vivez la joie de l'Afrique. Découvrez les joyaux cachés</b>
+                    </p>
+                </div>
+                <div class="mb-2 bf4 ">
+                    <h1 class="mb-3 text-light">Vous avez un compte ?</h1>
+                    <a href="/login" class="text-light">Login <img src="{% static 'images/Group.svg' %}"
+                            alt="arrow" width="20px"></a>
+                </div>
+            </div>
+            <div class="b-3errte w-100">
+                <div class="mb-4 p-3">
+                    <div class="mb-5 d-flex justify-content-between w-100">
+                        <div>
+                            <img src="{% static 'images/Group 1.svg' %}" alt="logo" width="200" height="80">
+                        </div>
+                        <div class="ex">
+                            <div class="e1"><img src="{% static 'images/Ellipse 1.svg' %}" style="position: absolute; left: -50px; top: 0px;"  alt="">
+                            </div>
+                            <div class="e2"><img src="{% static 'images/Ellipse 2.svg' %}" style="position: absolute; left: -100px; top: 20px;" alt=""></div>
+                            <div class="e3"><img src="{% static 'images/Ellipse 3.svg' %}" style="position: absolute; top:60px; left:-70px;" alt="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bup12">
+                        <h1 class="bs5 mb-4">Commencez avec nous !</h1>
+                        <div class="form">
+                            <form id="signupForm" method="post">
+                                <label for="stremail">Email</label>
+                                <input type="email" class="mb-2" id="stremail" placeholder="example@gmail.com">
+                                <div id="msg" style="padding-left: 20px; margin-bottom: 10px;"></div>
+                                <button type="submit" class="btn-bs6">Continue <span><img
+                                            src="{% static 'images/Group.svg' %}" alt="icon"
+                                            style="margin-bottom: 3px;"></span></button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="{% static 'js/butterup.min.js' %}"></script>
+    <script src="{% static 'js/apps.js' %}"></script>
+</body>
+
+</html>

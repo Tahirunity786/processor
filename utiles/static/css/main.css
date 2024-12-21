@@ -1,0 +1,1254 @@
+@font-face {
+    font-family: Baloo2;
+    src: url(/font/BalooBhai2-SemiBold.ttf);
+}
+
+/* Sipinner */
+/* Loader styles */
+#spinner {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #03193E;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+/* Loader animation styles */
+.lds-dual-ring {
+    display: inline-block;
+    width: 80px;
+    height: 80px;
+}
+
+.lds-dual-ring::after {
+    content: " ";
+    display: block;
+    width: 64px;
+    height: 64px;
+    margin: 8px;
+    border-radius: 50%;
+    border: 6px solid #fff;
+    border-color: #fff transparent #fff transparent;
+    animation: lds-dual-ring 1.2s linear infinite;
+}
+
+@keyframes lds-dual-ring {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* Hide content initially */
+#content {
+    display: none;
+}
+
+/* Sipinner */
+
+html {
+    scroll-behavior: smooth;
+}
+
+.navbar-scrolled {
+    background-color: #03193E !important;
+}
+
+.padd {
+    padding-top: 0.2rem;
+    padding-bottom: 0.38rem;
+    padding-left: 0.6rem;
+    padding-right: 0.6rem;
+}
+
+.dropdown-menu[data-bs-popper] {
+    top: 100%;
+    left: -153px;
+    right: 0px;
+}
+
+
+.main-cover {
+    width: 100%;
+    height: 100%;
+
+
+}
+
+.content {
+    z-index: 20;
+    color: white;
+}
+
+.z-up {
+    z-index: 150;
+    position: relative;
+}
+
+.cus-f {
+    font-weight: 900;
+    font-size: 2.5em;
+    font-family: Baloo2;
+}
+
+.fs-p {
+    font-size: 2em;
+    font-weight: 700;
+}
+
+.w-p {
+    width: 100%;
+
+}
+
+#comp-lns73fzv {
+    transform: rotate(180deg);
+}
+
+.context-box {
+    background: linear-gradient(to right, #002871, #01316d);
+    color: white;
+    border-radius: 10px;
+
+}
+
+.under-line {
+    background-color: white;
+    width: 14%;
+    height: 3px;
+    margin: 0 auto;
+}
+
+
+.up-btn {
+    background-color: #f6eef9;
+    padding: 10px;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #680198;
+    font-weight: 900;
+    transition: all .3s ease-in-out;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.up-btn:hover {
+
+    background-color: #f3daff;
+
+}
+
+.up-btn-outline {
+    transition: all .3s ease-in-out;
+    background-color: transparent;
+    padding: 9px;
+    border: 2px solid #f6eef9;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: white;
+    font-weight: 900;
+    text-decoration: none;
+    cursor: pointer;
+
+}
+
+.up-btn-outline:hover {
+    background-color: #f6eef9;
+    color: #680198;
+}
+
+
+/* Aanalyzer html */
+
+.mvh {
+    background-color: white;
+    height: 100%;
+    width: 100%;
+}
+
+.upload-container {
+    width: 300px;
+    text-align: center;
+}
+
+.drag-drop-area {
+    border: 2px dashed white;
+    padding: 20px;
+    cursor: pointer;
+
+    /* transition: background-color 0.3s; */
+    margin-top: 80px;
+    min-height: 200px;
+}
+
+.drag-drop-area:hover {
+    background-color: #032357;
+}
+
+.drag-drop-area p {
+    margin: 0;
+    font-size: 14px;
+    color: white;
+}
+
+.drag-drop-area input[type="file"] {
+    display: none;
+}
+
+#previewContainer {
+    margin-top: 20px;
+}
+
+#previewContainer img {
+    max-width: 100%;
+    height: auto;
+    margin-top: 10px;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 20px;
+    background-color: #eee;
+    border-radius: 5px;
+    overflow: hidden;
+    margin-top: 20px;
+    display: none;
+    /* Hidden initially */
+}
+
+.progress {
+    height: 100%;
+    width: 0;
+    background: linear-gradient(to right, #025afd, #01316d);
+    transition: width 0.3s;
+}
+
+
+.info-text {
+    margin-top: 20px;
+    font-family: Baloo2;
+    font-weight: 600;
+    font-size: 1.2em;
+}
+
+.info-tem-sm {
+    font-family: Baloo2;
+    font-weight: 600;
+    font-size: 0.8em;
+}
+
+/* Doctor baisc dashboard */
+.side-bar-link-h {
+    color: rgb(186, 186, 186);
+    text-decoration: none;
+    font-size: 0.9em;
+    font-family: Baloo2;
+}
+
+.divider {
+    background-color: white;
+    width: 100%;
+    height: 3px;
+}
+
+hr {
+    margin-top: 0.8px;
+    margin-bottom: 0.9px;
+}
+
+/* About us page */
+.about-content {
+    padding-top: 150px;
+    color: white;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    font-family: Baloo2;
+}
+
+/* auth pages */
+h1,
+h5,
+label,
+button,
+span {
+    font-family: Baloo2;
+}
+
+p {
+    font-family: Baloo2 Arial, Helvetica, sans-serif;
+}
+
+.separator {
+    display: flex;
+    align-items: center;
+    text-align: center;
+}
+
+.separator .line {
+    flex: 1;
+    border: none;
+    border-top: 1px solid #000;
+    margin: 0 10px;
+}
+
+.separator span {
+    padding: 0 10px;
+    font-weight: bold;
+}
+
+ul li {
+    margin-top: 20px;
+}
+
+main {
+    background: url("../images/hotel-1.jpg");
+    width: 100%;
+    height: 350px;
+
+}
+
+main .cover {
+    width: 100%;
+    height: 100%;
+    background-color: #85858500;
+}
+
+.search-bar {
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.search-bar input {
+    border: none;
+    outline: none;
+    background-color: transparent;
+    width: 100%;
+}
+
+.search-bar input::placeholder {
+    color: #6c757d;
+}
+
+.search-bar .col {
+    border-right: 1px solid #ddd;
+}
+
+.search-bar .col:last-child {
+    border-right: none;
+}
+
+
+.dropdown-toggle::after {
+    display: none;
+}
+
+.search-bar input::placeholder {
+    color: #6c757d;
+}
+
+.search-land {
+    padding-left: 0px;
+    padding-right: 4px;
+    outline: none;
+    border: none;
+    background-color: rgb(255, 249, 250, 1);
+
+}
+
+.search-land:focus {
+    box-shadow: none !important;
+    /* Remove blue focus border */
+    border: none !important;
+    background-color: rgb(255, 249, 250, 1);
+    pointer-events: none;
+}
+
+footer {
+    background-color: #F3F3F3;
+    height: auto;
+
+}
+
+.fts-xe2 {
+    margin-bottom: 50px;
+}
+
+.fts-xxe0 {
+    margin-right: 40px;
+}
+
+.fts-xxe1 {
+    margin-right: 40px;
+}
+
+.fts-xxe1,
+.fts-xxe0 {
+    position: relative;
+}
+
+.fts-xxxe1 {
+    position: absolute;
+    top: 8px;
+    left: 10px;
+}
+
+.modal.fade .modal-dialog {
+    transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+    transform: translateY(-25px);
+    /* Starts slightly off-screen */
+    opacity: 0;
+    /* Initially invisible */
+}
+
+.modal.show .modal-dialog {
+    transform: translateY(0);
+    /* Slide in smoothly */
+    opacity: 1;
+    /* Fully visible */
+}
+
+.fm-ctrl {
+    width: 100%;
+    border: 2px solid rgb(173, 173, 173) !important;
+    border-radius: 10px;
+    padding: 10px;
+    padding-left: 70px;
+    outline: none;
+    font-weight: 500;
+
+}
+
+/* Container styling */
+.custom-dropdown {
+    position: absolute;
+    left: 50%;
+    top: 42%;
+    transform: translateX(-50%);
+    width: 60%;
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    z-index: 9999;
+    padding: 20px;
+    display: none;
+    /* Hidden by default */
+    transition: all 0.3s ease;
+}
+
+/* Show dropdown when necessary */
+.custom-dropdown.show {
+    display: block;
+}
+
+
+/* Dropdown header styles */
+.custom-dropdown h5,
+.custom-dropdown h6 {
+    margin-bottom: 15px;
+    color: #333;
+}
+
+/* Button styling for person/bedroom counts */
+.custom-dropdown .btn {
+    margin: 5px;
+}
+
+/* Styling the label container */
+.custom-label {
+    font-weight: 600;
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    /* Centers vertically */
+    font-size: 13px;
+    display: inline-block;
+    border-right: 1px solid black;
+    padding-right: 10px;
+    /* Add some space on the right */
+    line-height: 1.2;
+    font-weight: 800;
+}
+
+/* Styling the input field */
+.fm-ctrl {
+    padding-left: 100px;
+    /* Adjust for the label's width */
+    height: 40px;
+    /* Set the desired height for the input */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    /* Rounded corners */
+    box-shadow: none;
+    outline: none;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.fm-ctrl:focus {
+    border: 1px solid black;
+}
+
+/* Checkbox container styling */
+.form-check {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.form-check-input {
+    margin-right: 10px;
+}
+
+.form-check-label {
+    font-size: 14px;
+    color: #555;
+}
+
+/* Normalize the checkbox size */
+input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    appearance: none;
+    -webkit-appearance: none;
+    background-color: rgb(161, 161, 161);
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    display: inline-block;
+    position: relative;
+    margin-right: 10px;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+input[type="checkbox"]:checked {
+    background-color: #007bff;
+    border-color: #007bff;
+    color: white;
+}
+
+input[type="checkbox"]:checked::before {
+
+    font-size: 12px;
+    color: white;
+    position: absolute;
+    top: 0;
+    left: 2px;
+}
+
+label {
+    margin-left: 10px;
+}
+
+/* Overlay background */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    /* Semi-transparent dark background */
+    z-index: 9998;
+    /* Below the dropdown */
+    display: none;
+    /* Hidden by default */
+    transition: all 0.3s ease;
+}
+
+/* Show the overlay */
+.overlay.show {
+    display: block;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .custom-dropdown {
+        width: 80%;
+        left: 10%;
+        transform: none;
+    }
+
+    .custom-dropdown {
+        top: 100%;
+    }
+}
+
+@media (max-width: 576px) {
+    .custom-dropdown {
+        width: 90%;
+        left: 5%;
+    }
+
+    /* Responsive button sizing */
+    .custom-dropdown .btn {
+        padding: 10px 20px;
+        font-size: 14px;
+    }
+}
+
+/* Link to Open Modal */
+.custom-open-modal-link {
+    color: #007bff;
+    text-decoration: none;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.custom-open-modal-link:hover {
+    text-decoration: underline;
+}
+
+/* Modal Overlay */
+.custom-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+/* Modal Box */
+.custom-modal {
+    background-color: #fff;
+    width: 50%;
+    max-width: 90%;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    animation: customFadeIn 0.3s ease-in-out;
+}
+
+.custom-modal2 {
+    background-color: #fff;
+    width: 30%;
+    max-width: 90%;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    animation: customFadeIn 0.3s ease-in-out;
+}
+
+/* Modal Header */
+.custom-modal-header {
+    padding: 15px;
+    background-color: white;
+    color: black;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+
+.custom-modal-header h2 {
+    margin: 0;
+    font-size: 20px;
+}
+
+.custom-modal-header .custom-close-modal-btn,
+.custom-close-modal-btn2 {
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+/* Modal Body */
+.custom-modal-body {
+    padding: 20px;
+    font-size: 16px;
+    color: #333;
+}
+
+.custom-modal-body label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.custom-modal-body input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.custom-error-message {
+    color: red;
+    font-size: 12px;
+    margin-bottom: 15px;
+    display: none;
+}
+
+/* Modal Footer */
+.custom-modal-footer {
+    padding: 10px 20px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.custom-modal-footer .custom-close-modal-btn {
+    background-color: whitesmoke;
+    color: black;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.custom-modal-footer .custom-close-modal-btn:hover {
+    background-color: rgb(227, 227, 227);
+}
+
+/* Submit Button */
+.custom-submit-btn {
+    padding: 10px 20px;
+    background-color: #002871;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-left: 20px;
+}
+
+.custom-submit-btn:hover {
+    background-color: #0056b3;
+}
+
+/* Animation for Modal */
+@keyframes customFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.custom-image {
+    object-fit: cover;
+    /* Ensures the image fills the area while maintaining aspect ratio */
+    width: 100%;
+    /* Sets width to fill the container */
+    height: 200px;
+    /* Force equal height */
+}
+
+.btn-rev-nak {
+    font-size: medium;
+    outline: none;
+    border: none;
+    background-color: #4B75A5;
+    text-align: center;
+    color: white;
+    border-radius: 5px;
+    padding-top: .7rem;
+    padding-bottom: .7rem;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn-rev-nak:hover {
+    background-color: #577ba5;
+}
+
+.p-xe01 {
+    height: 40px;
+    border-radius: 50px;
+    outline: none;
+    border: 1px solid #8B8B8B;
+    padding: 8px 20px;
+}
+
+.custom-select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background: url(/assets/images/interface-arrows-button-down--arrow-down-keyboard.png) no-repeat right 10px center;
+    background-color: #fff;
+    padding-right: 30px;
+    display: inline-block;
+    width: 100%;
+    height: calc(2.25rem + 2px);
+    padding: 0.375rem 1.75rem 0.375rem 0.75rem;
+    line-height: 1.5;
+    color: #495057;
+    vertical-align: middle;
+}
+
+.custom-select {
+    appearance: none;
+    /* Remove default styling */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background: url('/assets/images/interface-arrows-button-down--arrow-down-keyboard.png') no-repeat right 10px center;
+    background-color: #fff;
+    /* Set background color */
+    padding-right: 30px;
+    /* Adjust padding to make room for the arrow */
+
+}
+
+.p-xe01 {
+    height: 40px;
+    border-radius: 50px;
+    outline: none;
+    border: 1px solid #8B8B8B;
+    padding: 8px 20px;
+}
+
+.p-xee01 {
+    border-radius: 10px;
+}
+
+.p-x10 {
+    border: 2px solid #F3F3F3;
+    height: auto;
+    border-radius: 30px;
+}
+
+.p-xe-16 {
+    border: 2px solid #F3F3F3;
+    height: auto;
+    border-radius: 30px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.p-x11 {
+    font-weight: bold;
+    font-weight: 1.5rem;
+}
+
+.p-x13 {
+    width: 25%;
+    height: 110px;
+    background-color: #C7C7C7;
+    border-radius: 20px;
+}
+
+.p-x14 {
+    width: 65%;
+}
+
+.p-x15 {
+    width: 60%;
+}
+
+.p-x16 {
+    width: 30%;
+    font-size: smaller;
+    margin-right: 10px;
+}
+
+.p-x17 {
+    font-size: 1rem;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.bg-p {
+    background-color: #C7C7C7;
+    height: 100px;
+    width: 100%;
+    border-radius: 20px;
+
+}
+
+.p-xeee-btn {
+    outline: none;
+    border: 2px solid #4B75A5;
+    background-color: white;
+    height: 40px;
+    width: 100%;
+    border-radius: 50px;
+}
+
+.p-xeeee-btn {
+    height: 50px;
+    width: 170px;
+    border: none;
+    outline: none;
+    background-color: #4B75A5;
+    border-radius: 50px;
+    color: white;
+    font-size: medium;
+}
+
+.p-xeee-btn:focus {
+    border: none;
+    background-color: #4B75A5;
+    color: white;
+}
+
+.p-xeeee-btn:hover {
+    background-color: #5989c1;
+}
+
+.bg-p25 {
+    border: none;
+    outline: none;
+    background-color: #4B75A5;
+    border-radius: 50px;
+    color: white;
+    font-size: medium;
+    width: 100%;
+    height: 40px;
+}
+
+.bg-p25:hover {
+    background-color: #5989c1;
+}
+
+.p-xee-01 {
+    font-size: 0.8125rem;
+}
+
+.cf-xe2 html {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+.bg-p23,
+.bg-p24 {
+    color: white;
+    text-decoration: none;
+    border-radius: 20px;
+    display: block;
+    height: 60px;
+    width: 100%;
+    padding: 17px 0px;
+    background-color: #3F556D;
+}
+
+.bg-p24 {
+    background-color: white;
+    border: 2px solid #3F556D;
+    color: black;
+}
+
+.bg-p23:hover {
+    background-color: #4B75A5;
+    text-decoration: none;
+    color: #fff;
+}
+
+.bg-p24:hover {
+    background-color: #4B75A5;
+    text-decoration: none;
+    color: #fff;
+    border: none;
+}
+
+.nk-like,
+.nk-share {
+    width: 40px;
+    height: 40px;
+    outline: none;
+    border: none;
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+
+}
+
+.nk-like:hover {
+    background-color: rgb(255, 84, 112);
+    color: white;
+}
+
+.nk-share:hover {
+    background-color: #4B75A5;
+    color: white;
+}
+
+.ex-o {
+    padding-top: 12px !important;
+    padding-bottom: 12px !important;
+    font-weight: 500;
+    padding-left: 30px !important;
+    padding-right: 30px !important;
+}
+
+.ex-o:hover {
+    background-color: rgb(215, 215, 215);
+}
+
+.nav-center {
+    padding: 0px !important;
+}
+
+.r-1 {
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+}
+
+.r-2 {
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    padding-left: 20px !important;
+}
+
+.nav-link.active {
+    background-color: rgb(215, 215, 215);
+    /* Change to your desired active color */
+    color: white;
+    /* Optional: change text color for contrast */
+}
+
+.product-carousel-container {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+}
+
+.product-carousel-wrapper {
+    width: 100%;
+    overflow: hidden;
+}
+
+.product-carousel {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    will-change: transform;
+    /* Optimization */
+}
+
+.product-carousel-item {
+    flex: 0 0 25%;
+    /* Show 4 items per slide by default */
+    padding: 10px;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+.product-carousel-item img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+
+.product-carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(255, 255, 255);
+    color: rgb(0, 0, 0);
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    z-index: 10;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+}
+
+.prev-product-btn {
+    left: 10px;
+}
+
+.next-product-btn {
+    right: 10px;
+}
+
+.hidden {
+    display: none;
+}
+
+/* RESPONSIVE DESIGN */
+@media (max-width: 1024px) {
+    .product-carousel-item {
+        flex: 0 0 33.33%;
+        /* 3 items per slide */
+    }
+}
+
+@media (max-width: 768px) {
+    .product-carousel-item {
+        flex: 0 0 50%;
+        /* 2 items per slide */
+    }
+}
+
+@media (max-width: 480px) {
+    .product-carousel-item {
+        flex: 0 0 100%;
+        /* 1 item per slide */
+    }
+}
+.custom-carousel {
+    display: flex;
+    transition: transform 0.3s ease-in-out; /* Ensure smooth transition */
+}
+
+.custom-carousel-item {
+    flex: 0 0 100%; /* Adjust width to 100% for single items */
+    max-width: 100%; /* Prevent overflow */
+}
+
+/* Container and button styling */
+.custom-carousel-container {
+    position: relative;
+    overflow: hidden; /* Ensure items overflow is hidden */
+}
+
+.custom-carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    font-size: 24px;
+    z-index: 1; /* Ensure buttons are on top */
+}
+
+.custom-prev-btn {
+    left: 10px;
+}
+
+.custom-next-btn {
+    right: 10px;
+}
+
+.hidden {
+    display: none;
+}
+
+/* Responsive adjustments */
+@media (min-width: 576px) {
+    .custom-carousel-item {
+        flex: 0 0 50%;  /* Show two items per view */
+        max-width: 50%;
+    }
+}
+
+@media (min-width: 768px) {
+    .custom-carousel-item {
+        flex: 0 0 33.33%; /* Show three items per view */
+        max-width: 33.33%;
+    }
+}
+
+@media (min-width: 992px) {
+    .custom-carousel-item {
+        flex: 0 0 25%; /* Show four items per view */
+        max-width: 25%;
+    }
+}
+
+
+.main-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* Ensures the main image maintains aspect ratio and fills the container */
+}
+
+.small-img-wrapper {
+    height: 150px;
+    /* Set a fixed height for the smaller image containers */
+}
+
+.small-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* Ensures the small images maintain aspect ratio and fill their containers */
+}
+.bg-off {
+    background-color: white;
+    position: relative;
+    height: 100%;
+}
+
+.bg-off::before {
+    content: "";
+    background: url('../images/bg-pot.png') bottom / 70% no-repeat;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 0.7; /* Adjust this value to set the desired opacity */
+    z-index: 1;
+}
+
+.bg-off > * {
+    position: relative;
+    z-index: 2; /* Ensures content appears above the background */
+}
+
+
+@media (max-width: 768px) {
+    .main-img {
+        height: auto;
+        object-fit: contain;
+    }
+
+    .small-img-wrapper {
+        margin-bottom: 10px;
+    }
+}
+
+
+/* Main responsive part */
+
+.w-sm {
+    display: none !important;
+}
+
+@media (max-width:992px) {
+    .w-sm-100 {
+        display: none !important;
+    }
+
+    .w-sm {
+        display: block !important;
+    }
+    .sm-search{
+        border-bottom: 1px solid rgb(162, 162, 162);
+        margin-bottom: 20px;
+    }
+    .sm-search-main{
+        border: 1px solid rgb(162, 162, 162);
+        border-radius: 10px;
+    }
+}
+@media (max-width: 576px) {
+    .row-cols-sm-1>* {
+        flex: 0 0 auto;
+        width: 100%;
+    }
+    .mb-nk-2{
+        margin-bottom: 10px;
+    }
+}
