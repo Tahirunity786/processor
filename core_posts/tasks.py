@@ -1,3 +1,4 @@
+import datetime
 import logging
 from celery import shared_task
 from django.utils.timezone import now
@@ -5,53 +6,108 @@ from core_posts.models import BedRoom, Tables, FavouriteList
 from core_payments.models import OrderPlacementStorage, PaymentUserDetail
 from core_control.models import AnonymousBooking
 import pytz
+from core_control.utiles import EmailAgent
 
 # Set up a logger
 logger = logging.getLogger(__name__)
 
+
 @shared_task
-def expire_bookings()-> None:
+def expire_bookings() -> None:
     """
-    Periodic task to expire bookings for rooms and tables, considering user time zones.
+    Periodic task to efficiently expire bookings for rooms and tables, considering user time zones.
+    Optimized to handle thousands of orders.
     """
-    order_storage = OrderPlacementStorage.objects.all()
+    email_agent = EmailAgent()
+
+    # Prefetch related objects to minimize database queries
+    order_storage = OrderPlacementStorage.objects.prefetch_related('orders_items__order', 'orders_items__content_object')
+    user_details = PaymentUserDetail.objects.all()
+    user_detail_map = {
+        detail.annoynmous_tracer: detail for detail in user_details
+    }
+
     for storage in order_storage:
-        user_via_personal_tz = PaymentUserDetail.objects.filter(annoynmous_tracer=storage.anonymous_track).order_by('-order_date_time').first()
-        # Get the user time zone
-        user_tz = pytz.timezone(user_via_personal_tz.time_zone)
+        user_detail = user_detail_map.get(storage.anonymous_track)
 
-        # Get the current time in the user's time zone
+        if not user_detail:
+            logger.warning("No user detail found for storage ID %s", storage.id)
+            continue
+
+        try:
+            user_tz = pytz.timezone(user_detail.time_zone)
+        except Exception as e:
+            logger.error("Invalid timezone for user %s: %s", user_detail.email, e)
+            continue
+
+        # Get the current time in the user's timezone
         current_time = now().astimezone(user_tz)
-        # Get the current date in the user's time zone
-        current_date = current_time.date()
-        
-        # Get the current time in the user's time zone
-        current_time = current_time.time()
 
-        # Get the order items
-        order_items = storage.orders_items.all()
-        for order_item in order_items:
-            # Get the order item  & content object
+        # Collect updates for batch processing
+        updates = []
+        notifications = []
+
+        for order_item in storage.orders_items.all():
             order_booking = order_item.order
             content_object = order_item.content_object
-            # Check if the content object is a bed room
-            if isinstance(content_object, BedRoom):
-                if order_booking.check_out < current_date and content_object.is_booked == True:
-                    # Expire the booking
-                    content_object.is_booked = False
-                    content_object.save()
-            # Check if the content object is a table
-            elif isinstance(content_object, Tables):
-                # Check if the check-out date is less than the current date
-                if order_booking.check_in < current_date and content_object.is_booked == True:
-                    # Expire the booking
-                    content_object.is_booked = False
-                    content_object.save()
-            else:
-                logger.error("Invalid content object type provided.")
 
-    
-    
+            # Calculate expiration time (midnight after check-out day)
+            expiration_time_naive = datetime.datetime.combine(
+                order_booking.check_out + datetime.timedelta(days=1),
+                datetime.time.min
+            )
+            expiration_time = user_tz.localize(expiration_time_naive)
+            print("Here is current time : ",current_time)
+            print("Here is expiration time : ",expiration_time)
+
+            if isinstance(content_object, BedRoom) and current_time >= expiration_time and content_object.is_booked:
+                content_object.is_booked = False
+                updates.append(content_object)
+
+                logger.info("Expired BedRoom booking for order %s", order_booking.pub_order_id)
+
+                notifications.append({
+                    "order_id": order_booking.pub_order_id,
+                    "email": user_detail.email,
+                    "name": user_detail.name,
+                    "address": f"{content_object.hotel.city}, {content_object.hotel.country}, {content_object.hotel.address}",
+                    "check_in": order_booking.check_in,
+                    "check_out": order_booking.check_out,
+                    "nights": order_booking.nights,
+                    "type": "bed",
+                })
+
+            elif isinstance(content_object, Tables) and current_time >= expiration_time and content_object.is_booked:
+                content_object.is_booked = False
+                updates.append(content_object)
+
+                logger.info("Expired Table booking for order %s", order_booking.pub_order_id)
+
+                notifications.append({
+                    "order_id": order_booking.pub_order_id,
+                    "email": user_detail.email,
+                    "name": user_detail.name,
+                    "address": f"{content_object.restaurant.city}, {content_object.restaurant.country}, {content_object.restaurant.address}",
+                    "check_in": order_booking.check_in,
+                    "type": "table",
+                })
+
+        # Bulk update all expired bookings
+        if updates:
+            BedRoom.objects.bulk_update(
+                [obj for obj in updates if isinstance(obj, BedRoom)], ['is_booked']
+            )
+            Tables.objects.bulk_update(
+                [obj for obj in updates if isinstance(obj, Tables)], ['is_booked']
+            )
+
+        # Send notifications in batch
+        for notification in notifications:
+            email_agent.send_smtp_email(notification, "expiration_alert")
+
+    logger.info("Booking expiration task completed.")
+
+
 @shared_task
 def fav_add_task(post_id: str, booking_id: str, type_of: str) -> str:
     """

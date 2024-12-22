@@ -74,7 +74,7 @@ def add_top_fav(self, credentials: str, storage_id: int) -> str:
                 }
 
                 # Send email to hotel owner
-                email_agent.send_smtp_email(hotel_data, is_client=False)
+                email_agent.send_smtp_email(hotel_data, email_type="owner_alert")
 
             elif isinstance(related_object, Tables):
                 order_data = {"check_in": order_booking.check_in, "order_id": order_booking.pub_order_id, "booking_type": "table"}
@@ -89,7 +89,7 @@ def add_top_fav(self, credentials: str, storage_id: int) -> str:
                 }
 
                 # Send email to restaurant owner
-                email_agent.send_smtp_email(restaurant_data, is_client=False)
+                email_agent.send_smtp_email(restaurant_data, email_type="owner_alert")  
 
             else:
                 logger.warning(f"Unknown object type: {type(related_object)}")
@@ -100,7 +100,7 @@ def add_top_fav(self, credentials: str, storage_id: int) -> str:
             client_data["order_details"].append(order_data)
         
         # Send email to the client
-        email_status = email_agent.send_smtp_email(client_data, is_client=True)
+        email_status = email_agent.send_smtp_email(client_data, email_type="client_confirmation")
         return "Emails sent successfully" if email_status else "Failed to send client email"
 
     except Exception as e:

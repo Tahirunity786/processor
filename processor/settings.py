@@ -29,10 +29,16 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv('DEBUG')
 
-ALLOWED_HOSTS = ['64.227.119.191', 'www.nakiese.com', 'https://nakiese.com/', 'nakiese.com', '127.0.0.1']
+ALLOWED_HOSTS = [
+    '64.227.119.191',
+    'www.nakiese.com',
+    'nakiese.com',
+    '127.0.0.1',
+]
 
 AUTH_USER_MODEL = 'core_control.User'
 # Application definition
+
 
 INSTALLED_APPS = [
     'daphne',
@@ -49,11 +55,14 @@ INSTALLED_APPS = [
     'django_filters',
     'rest_framework',
     'django_celery_beat',
-    'django_celery_results'
+    'django_celery_results',
+    'corsheaders'
     
 ]
 
+
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',

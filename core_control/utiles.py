@@ -13,43 +13,63 @@ import http.client
 conn = http.client.HTTPSConnection("nakiese.ipzmarketing.com")
 
 class EmailAgent:
-    def send_smtp_email(self, data: dict, is_client: bool) -> bool:
+    def __init__(self):
+        self.templates = {
+            "client_confirmation": {
+                "template": "email/en/confirmation-client.html",
+                "subject": "Booking Confirmation",
+            },
+            "owner_alert": {
+                "template": "email/en/confirmation-owner.html",
+                "subject": "Booking Alert",
+            },
+            "expiration_alert": {
+                "template": "email/en/exipration.html",
+                "subject": "Booking Expiration Alert",
+            },
+        }
+
+    def send_smtp_email(self, data: dict, email_type: str) -> bool:
         """
         Sends an SMTP email.
 
         Args:
             data (dict): Data to render in the email templates.
-            is_client (bool): Whether the email is for the client or the owner.
+            email_type (str): The type of email to send (e.g., "client_confirmation", "owner_alert", "expiration_alert").
 
         Returns:
             bool: True if the email is sent successfully, False otherwise.
         """
-        try:
+        if email_type not in self.templates:
+            logger.error(f"Invalid email type: {email_type}")
+            return False
 
-            if is_client:
-                template = "email/en/confirmation-client.html"
-                subject = "Booking Confirmation"
-            else:
-                template = "email/en/confirmation-owner.html"
-                subject = "Booking Alert"
-            
-            
+        try:
+            # Retrieve the template and subject based on the email type
+            email_config = self.templates[email_type]
+            template = email_config["template"]
+            subject = email_config["subject"]
+
             # Render email content
             body = render_to_string(template, data)
-            
+
             # Prepare and send the email
-            sender = EmailMessage(
+            email = EmailMessage(
                 subject=subject,
                 body=body,
                 from_email=settings.EMAIL_REALY_HOST,
-                to=[data["email"]],
+                to=[data.get("email")],
             )
-            sender.content_subtype = "html"  # Set content type as HTML
-            sender.send(fail_silently=False)
+            email.content_subtype = "html"  # Set content type as HTML
+            email.send(fail_silently=False)
+
+            logger.info(f"Email sent successfully to {data.get('email')} ({email_type})")
             return True
         except Exception as e:
-            logger.error(f"Email Sending Error ({template}): {str(e)}")
+            logger.error(f"Failed to send email ({email_type}): {str(e)}")
             return False
+        
+
     
     def send_by_api(self, data: dict, is_client: bool) -> bool:
         """
