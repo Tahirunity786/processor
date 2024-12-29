@@ -12,6 +12,13 @@ def generate_unique_id(prefix="nak"):
         return f"{prefix}-{unique_str}"
     return f"{prefix}{unique_str})"
 
+def generate_unique_order_id():
+    """Generate a unique ID using random letters and digits."""
+    import random
+    
+    
+    return f"NAK{random.randint(10000000, 99999999)}"
+
 class Order(models.Model):
     """Generic Order model."""
     _id = models.CharField(max_length=100, unique=True, db_index=True, null=True, blank=True, verbose_name=_("Order ID"))
@@ -31,7 +38,7 @@ class Order(models.Model):
     def save(self, *args, **kwargs):
         if not self._id:
             self._id = generate_unique_id()
-            self.pub_order_id = generate_unique_id('NAK')
+            self.pub_order_id = generate_unique_order_id()
         super().save(*args, **kwargs)
 
 class OrderItem(models.Model):

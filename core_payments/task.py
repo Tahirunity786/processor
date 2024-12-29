@@ -37,12 +37,9 @@ def add_top_fav(self, credentials: str, storage_id: int) -> str:
         order_items = storage_sanitizer.orders_items.all()
 
         email_agent = EmailAgent()
-        with open('/home/tahir/emmual/processor/utiles/static/images/Logo.svg', "rb") as image_file:
-            logo_url = base64.b64encode(image_file.read()).decode("utf-8")
 
         # Prepare client data for email
         client_data = {
-            "logo_url": logo_url,
             "name": user_detail.name,
             "email": user_detail.email,
             "order_details": [],
@@ -57,13 +54,12 @@ def add_top_fav(self, credentials: str, storage_id: int) -> str:
                     "order_id": order_booking.pub_order_id,
                     "check_in": order_booking.check_in,
                     "check_out": order_booking.check_out,
-                    "nights": order_booking.nights,
                     "capacity": related_object.capacity,
+                    "total_price": related_object.price*order_booking.nights,
                     "booking_type": "bed"
 
                 }
                 hotel_data = {
-                    "logo_url": logo_url,
                     "name": related_object.hotel.name,
                     "email": related_object.hotel.email,
                     "city": related_object.hotel.city,
@@ -79,7 +75,7 @@ def add_top_fav(self, credentials: str, storage_id: int) -> str:
             elif isinstance(related_object, Tables):
                 order_data = {"check_in": order_booking.check_in, "order_id": order_booking.pub_order_id, "booking_type": "table"}
                 restaurant_data = {
-                    "logo_url": logo_url,
+
                     "name": related_object.restaurant.name,
                     "email": related_object.restaurant.email,
                     "city": related_object.restaurant.city,

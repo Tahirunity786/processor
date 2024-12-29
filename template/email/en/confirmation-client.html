@@ -43,7 +43,7 @@
 
     /* Header */
     .header {
-      background-color: #2b3b48;
+      background-color: #6084a2;
       color: #ffffff;
       text-align: center;
       padding: 30px 20px;
@@ -153,7 +153,9 @@
   <div class="email-container">
     <!-- Header -->
     <div class="header">
-      <img src="{{logo_url}}" alt="Company Logo" />
+      <div>
+      
+      </div>
       <h1>Booking Confirmed</h1>
     </div>
 
@@ -166,26 +168,27 @@
       </p>
 
       <!-- Booking Details -->
-      <div class="booking-details">
+ 
 
-        <table class="table table-bordered table-striped w-100">
-          <thead class="table-dark">
+        <table class="table table-bordered table-striped " style="border-collapse: collapse; background-color: #f8f9fa; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); width:100%; margin-bottom: 20px;">
+          <thead class="table-dark" style="background-color: #343a40; color: #fff; text-align: left;">
             <tr>
-              <th scope="col">Order ID</th>
-              <th scope="col">Check-In</th>
-              <th scope="col">Check-Out</th>
-              <th scope="col">Guests</th>
-              <th scope="col">Total Price</th>
+              <th scope="col" style="padding: 15px;">Order ID</th>
+              <th scope="col" style="padding: 15px;">Check-In</th>
+              <th scope="col" style="padding: 15px;">Check-Out</th>
+              <th scope="col" style="padding: 15px;">Guests</th>
+              <th scope="col" style="padding: 15px;">Total Price</th>
             </tr>
           </thead>
           <tbody>
             {% for order in order_details %}
-            <tr>
-              <th scope="row">{{ order.order_id }}</th>
-              <td>{{ order.check_in|date:"d M Y" }}</td>
-              <td>{{ order.check_out|date:"d M Y" }}</td>
-              <td>{{ order.guests }}</td>
-              <td>${{ order.total_price|floatformat:2 }}</td>
+
+            <tr style="border-bottom: 1px solid #dee2e6;">
+              <th scope="row" style="padding: 10px; font-weight: bold; color: #007bff;">#{{ order.order_id }}</th>
+              <td style="padding: 10px;">{{ order.check_in|date:"d M Y" }}</td>
+              <td style="padding: 10px;">{{ order.check_out|date:"d M Y" }}</td>
+              <td style="padding: 15px;">{{ order.capacity }} Persons</td>
+              <td style="padding: 15px; font-weight: bold; color: #28a745;">{{ order.total_price|floatformat:2 }}$</td>
             </tr>
             {% empty %}
             <tr>
@@ -193,9 +196,10 @@
             </tr>
             {% endfor %}
           </tbody>
-        </table>
 
-      </div>
+        </table>
+        
+
 
       <p>
         If you need further assistance or would like to make any changes, feel
@@ -204,7 +208,7 @@
 
       <!-- Call to Action -->
       <p style="text-align: center; margin-top: 20px;">
-        <a href="https://example.com" class="cta-button">View Booking</a>
+        <a href="https://nakiese.com/nakiese/en/my-bookings" class="cta-button" style="color: white;">View Booking</a>
       </p>
     </div>
 
