@@ -8,6 +8,7 @@ from django.utils.timezone import now
 from django.contrib.contenttypes.fields import GenericRelation
 from core_control.models import AnonymousBooking
 from django.utils.translation import gettext_lazy as _
+from zoneinfo import available_timezones
 User = get_user_model()
 
 def generate_unique_id(prefix="nak"):
@@ -51,6 +52,9 @@ class HotelImages(models.Model):
 
 
 class Hotel(models.Model):
+    TIMEZONE_CHOICES = [(tz, tz) for tz in sorted(available_timezones())]
+
+    
     """
     Represents a hotel with basic information, images, and its associated city.
     """
@@ -66,6 +70,7 @@ class Hotel(models.Model):
     email = models.EmailField(null=True, db_index=True)
     website = models.URLField(max_length=200, blank=True)
     company_registration_number = models.PositiveBigIntegerField(db_index=True)
+    hotel_time_zone = models.CharField(max_length=100, db_index=True, default='UTC',choices=TIMEZONE_CHOICES)
 
     def __str__(self):
         return self.name
@@ -147,6 +152,7 @@ class ResturantImages(models.Model):
 
 
 class Restaurant(models.Model):
+    TIMEZONE_CHOICES = [(tz, tz) for tz in sorted(available_timezones())]
     """
     Represents a restaurant with basic details and related images.
     """
@@ -161,6 +167,7 @@ class Restaurant(models.Model):
     email = models.EmailField(unique=True, db_index=True)
     website = models.URLField(max_length=200, blank=True)
     company_registration_number = models.PositiveBigIntegerField(db_index=True)
+    hotel_time_zone = models.CharField(max_length=100, db_index=True, default='UTC',choices=TIMEZONE_CHOICES)
 
     def __str__(self):
         return self.name

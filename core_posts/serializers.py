@@ -66,7 +66,7 @@ class AllHotelSerializer(serializers.ModelSerializer):
 class MiniHotelSerializer(serializers.ModelSerializer):
     class Meta:
         model = Hotel
-        fields = ['name', 'country', 'address']
+        fields = ['name', 'country', 'address', 'hotel_time_zone']
         
 class HotelRelationSerializer(serializers.ModelSerializer):
     images = HotelImagesSerializer(many=True, read_only=True)

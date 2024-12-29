@@ -187,13 +187,31 @@ async function favouriteList() {
             // If both are empty, show a message
             if ((!fav_bed || fav_bed.length === 0) && (!fav_table || fav_table.length === 0)) {
                 const noDataMessage = document.createElement('p');
-                noDataMessage.innerText = "No favourites found.";
+                noDataMessage.innerHTML = `
+                <section class="text-center w-100" style="height:80vh;">
+                <h2 class="text-muted mt-5 mb-4">No Favourite found</h2>
+                <a href="/" class="btn btn-primary">Browse Now</a>
+                </section>
+                `;
                 noDataMessage.classList.add('text-muted');
                 parentBlock.append(noDataMessage);
             }
         } else {
-            console.warn("favouriteList: No data available.");
-            document.getElementById("parentBlock").innerHTML = '<p class="text-muted">No favourites found.</p>';
+            const parentBlock = document.getElementById("parentBlock");
+
+            // Clear previous content
+            parentBlock.innerHTML = '';
+            const noDataMessage = document.createElement('p');
+            noDataMessage.innerHTML = `
+            <section class="text-center w-100 d-flex justify-content-center align-items-center" style="height:50vh;">
+           <div class="container">
+            <h2 class="text-muted mb-4">No Favourite found</h2>
+            <a href="/" class="btn btn-primary">Browse Now</a>
+            </div>
+            </section>
+            `;
+            noDataMessage.classList.add('text-muted');
+            parentBlock.append(noDataMessage);
         }
     } catch (error) {
         console.error(`Error in favouriteList: ${error.message}`);

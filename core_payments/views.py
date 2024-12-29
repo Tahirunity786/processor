@@ -260,7 +260,7 @@ class OrderPlacer(APIView):
         except ValueError:
             raise ValueError(f"Invalid date format: {date_str}")
 
-    def multiple_order_relations(self, data, cookie):
+    def multiple_order_relations(self, data, cookie, time_zone):
         """
         Process multiple order relations and create corresponding database records.
         
@@ -338,6 +338,7 @@ class OrderPlacer(APIView):
     
                 # Save the storage instance after all orders are added
                 storage.anonymous_track = cookie
+                storage.time_zone = time_zone
                 storage.save()
                 return storage
     
@@ -345,7 +346,7 @@ class OrderPlacer(APIView):
             logger.error(f"Error processing multiple order relations: {e}")
             raise ValueError(f"An error occurred while processing orders: {e}")
 
-    def single_order_relations(self, data, cookie):
+    def single_order_relations(self, data, cookie, time_zone):
         
         try:
 
@@ -406,10 +407,12 @@ class OrderPlacer(APIView):
                     table.save()
                 else:
                     raise ValueError(f"Unsupported item type: {item_type}")
-            storage.anonymous_track = cookie
-            storage.save()
-
-            return storage
+                
+                storage.anonymous_track = cookie
+                storage.time_zone = time_zone
+                storage.save()
+    
+                return storage
     
         except (ValueError, TypeError) as e:
             logger.error(f"Error in single item price calculation: {e}")
@@ -428,9 +431,12 @@ class OrderPlacer(APIView):
 
     def post(self, request):
         data_token = request.data.get('data_token')
+        time_zone = request.data.get('time_zone')
         storage = ""
         if not data_token:
             return Response({"error": "data_token missing"}, status=status.HTTP_400_BAD_REQUEST)
+        if not time_zone:
+            return Response({"error": "Enable to find location"}, status=status.HTTP_400_BAD_REQUEST)
     
         anonymous_id = request.COOKIES.get('ann__nak')
         try:
@@ -441,9 +447,9 @@ class OrderPlacer(APIView):
         try:
             items = self.decode_data_token(data_token)
             if isinstance(items, dict):
-                storage = self.single_order_relations(items, _id_obj)
+                storage = self.single_order_relations(items, _id_obj, time_zone)
             elif isinstance(items, list):
-                storage = self.multiple_order_relations(items, _id_obj)
+                storage = self.multiple_order_relations(items, _id_obj, time_zone)
             else:
                 raise ValueError("Invalid items format. Expected a dictionary or a list.")
         except ValueError as e:

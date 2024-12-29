@@ -678,7 +678,7 @@ async function handlePaymentSuccess(paymentDataToken) {
             method: 'POST',
             credentials: 'include',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ data_token: paymentDataToken }),
+            body: JSON.stringify({ data_token: paymentDataToken,  time_zone :Intl.DateTimeFormat().resolvedOptions().timeZone }),
         });
 
         if (!response.ok) {

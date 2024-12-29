@@ -22,6 +22,7 @@ class Order(models.Model):
     created_at = models.DateTimeField(auto_now_add=True, verbose_name=_("Created At"))
     updated_at = models.DateTimeField(auto_now=True, verbose_name=_("Updated At"))
     type_booking = models.CharField(max_length=100, db_index=True, null=True, verbose_name=_("Booking Type"))
+    
 
     class Meta:
         verbose_name = _("Order")
@@ -51,6 +52,8 @@ class OrderPlacementStorage(models.Model):
     orders_items = models.ManyToManyField(OrderItem, related_name="storages", verbose_name=_("Orders"))
     created_at = models.DateTimeField(auto_now_add=True, verbose_name=_("Created At"))
     updated_at = models.DateTimeField(auto_now=True, verbose_name=_("Updated At"))
+    time_zone = models.CharField(max_length=50, null=True, blank=True, default="UTC", db_index=True)
+
 
     class Meta:
         verbose_name = _("Order Placement Storage")

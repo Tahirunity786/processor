@@ -3,35 +3,33 @@ document.addEventListener('DOMContentLoaded', () => {
         const now = new Date();
         const checkInDate = new Date(checkIn);
         let checkOutDate = null;
-        
+    
         if (checkOut) {
-            checkOutDate = new Date(checkOut);
-            // Adjust the check-out date to midnight at the start of the next day
-            checkOutDate.setHours(24, 0, 0, 0);
+            // Set checkOut to midnight UTC of the next day
+            const checkOutUTC = new Date(checkOut);
+            checkOutDate = new Date(
+                Date.UTC(
+                    checkOutUTC.getUTCFullYear(),
+                    checkOutUTC.getUTCMonth(),
+                    checkOutUTC.getUTCDate() + 1 // Midnight of the next day
+                )
+            );
         }
     
         if (checkInDate > now) {
-            // Case 1: Future booking start date
             const daysUntilCheckIn = Math.ceil((checkInDate - now) / (1000 * 60 * 60 * 24));
             return `Booking starts in ${daysUntilCheckIn} day(s)`;
         }
     
         if (checkInDate <= now && checkOutDate) {
-            // Calculate the total time difference in milliseconds
             const timeDifference = checkOutDate - now;
     
             if (timeDifference > 0) {
-                // Calculate total days remaining
                 const totalDays = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
-    
-                // Calculate remaining milliseconds for hours and minutes
                 const remainingMilliseconds = timeDifference % (1000 * 60 * 60 * 24);
-    
-                // Calculate exact hours and minutes
                 const remainingHours = Math.floor(remainingMilliseconds / (1000 * 60 * 60));
                 const remainingMinutes = Math.floor((remainingMilliseconds % (1000 * 60 * 60)) / (1000 * 60));
     
-                // Display the days, hours, and minutes correctly
                 return `${totalDays} days, ${remainingHours} hrs, ${remainingMinutes} mins`;
             } else {
                 return "Time expired";
@@ -39,9 +37,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     
         if (checkInDate <= now && (!checkOutDate || checkOutDate.toDateString() === checkInDate.toDateString())) {
-            // Case 3: Remaining time until midnight of the check-in day
             const midnight = new Date(now);
-            midnight.setHours(24, 0, 0, 0); // Set to midnight of the current day
+            midnight.setUTCHours(24, 0, 0, 0); // Midnight UTC of the current day
             const timeUntilMidnight = midnight - now;
     
             if (timeUntilMidnight > 0) {
@@ -51,9 +48,10 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
     
-        // Default case: Time expired
         return "Time expired";
     }
+    
+    
     
 
     function calculateTimeUntilMidnight(bookingTime) {
@@ -99,11 +97,10 @@ document.addEventListener('DOMContentLoaded', () => {
                     const city = getNestedValue(content, typeBooking === "bed" ? "hotel.city.name" : "restaurant.city.name");
                     const address = getNestedValue(content, typeBooking === "bed" ? "hotel.address" : "restaurant.address");
                     const typeSpecificText = typeBooking === "bed" ? "per night" : "/per table";
-
                     // Remaining time calculation
                     let remainingTime = '';
                     if (typeBooking === "bed") {
-                        remainingTime = calculateRemainingTime(order.check_in, order.check_out);
+                        remainingTime = calculateRemainingTime(order.check_in, order.check_out, content.hotel.hotel_time_zone);
                     } else if (typeBooking === "table") {
                         remainingTime = calculateTimeUntilMidnight(order.check_in);
                     }
@@ -151,7 +148,12 @@ document.addEventListener('DOMContentLoaded', () => {
             let data = await response.json();
             bookingGrid.innerHTML = gridGenerator(data); // Pass data to gridGenerator
         } else {
-            console.error("Failed to fetch bookings");
+            bookingGrid.innerHTML = `
+            <section class="text-center w-100" style="height:80vh;">
+            <h2 class="text-muted mt-5 mb-4">No bookings found</h2>
+            <a href="/" class="btn btn-primary">Book Now</a>
+            </section>
+            `;
         }
     }
 
